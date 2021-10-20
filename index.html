@@ -29,11 +29,24 @@
  @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,700&display=swap");
 @media screen and (max-width: 720px) {
   /*changes reflects on screen with a width of 720px and below*/
+    nav {
+      padding: 1.5rem 1rem;}
+      
+    .bio {
+  width: 25rem;
+  padding: 0.625rem;
+  border-radius: 6px;
+  box-shadow: 0px 2px 15px 2px var(--primary-shadow);
+      position: relative;
+}
+  .name {
+    font-size: 1em;
+    margin-left: -1em;
+    color: blue;
+  }
 }
   
-  nav {
-    padding: 1.5rem 1rem;
-  }
+
 /* Variables */
 :root {
   --font-family: 'IM Fell English SC', serif;
@@ -354,7 +367,7 @@ footer {
 
   <body>
      <nav>
-      <h1>ASHISH KUMAR PATRA</h1>
+      <h1 class = "name">ASHISH KUMAR PATRA</h1>
       <ul class="navigation">
         <li><a href="#about" class="nav-link">About</a></li>
         <li><a href="#skills" class="nav-link">Skills</a></li>
@@ -378,7 +391,7 @@ footer {
       <div class="bio animate__animated animate__shakeX">
         <h2 class="bio-title">About Me</h2>
         <p class="bio-text">
-          There's nothing much to say here. I like to read, write, code and love stuff about physics, mathematics (though I'm not really good at it) and computer science in general. I like the typical fiction stuff when it comes to reading.
+          I like to read, write, code and love stuff about physics, mathematics (though I'm not really good at it) and computer science in general. I like the typical fiction stuff when it comes to reading.
         </p>
       </div>
 </section>
