@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <!--CSS Styles -->
-    <link rel="stylesheet" href="assets/css/styles.css" />
+<!--     <link rel="stylesheet" href="assets/css/styles.css" /> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
 
     <!-- Favicons -->
     <link
@@ -33,7 +36,7 @@
   }
 /* Variables */
 :root {
-  --font-family: "Roboto", sans-serf;
+  --font-family: 'IM Fell English SC', serif;
   --normal-font: 400;
   --bold-font: 700;
   --bolder-font: 900;
@@ -150,6 +153,7 @@ nav ul li {
 .bio p {
   line-height: var(--line-height);
   padding: 0.3rem 0;
+  font-family: 'Sawarabi Mincho', sans-serif;
 }
 
 .more-about {
@@ -165,6 +169,7 @@ nav ul li {
 .more-about p {
   line-height: var(--line-height);
   padding: 0.4rem;
+  font-family: 'Sawarabi Mincho', sans-serif;
 }
 
 .skills {
@@ -233,6 +238,7 @@ nav ul li {
 
 .project-details {
   margin-bottom: var(--bottom-margin);
+  font-family: 'Sawarabi Mincho', sans-serif;
 }
 
 .project-card {
@@ -390,7 +396,7 @@ footer {
     </section>
     <!-- Skills section -->
     
-  <section class="skills" id="skills">
+  <!--<section class="skills" id="skills">
       <h2 class="skill-header">My Top Skills</h2>
 
       <div class="skills-wrapper">
@@ -436,7 +442,7 @@ footer {
           />
         </div>
       </div>
-    </section>
+    </section> -->
 
     <!-- Projects section -->
     
@@ -470,8 +476,12 @@ footer {
           </p>
           <a href="https://www.glowscript.org/#/user/p.b.ashish786/folder/MyPrograms/program/boids" target="_blank" class="project-link">Check it Out</a></br>
           <a href = "https://github.com/ashish-kp/Boids_Boi" target = "_blank" class = "project-link">Code here</a>
-        </div>
-      </div>
+   </div>
+   <div class = "projects-container">
+     <div>
+       
+     </div>
+   </div>
     </section>
 
     <!-- Contact section -->
@@ -526,7 +536,8 @@ footer {
     </section> -->
     <!-- Social accounts - Fixed to the right -->
 
-     <div class="socials">
+<!--      <div class="socials"> -->
+    <footer id = "contact">
       <a href="#" target="_blank"
         ><img
           src="https://github.com/ashish-kp/my_blog/blob/main/pictures/logos/gmail_animation.gif"
@@ -536,10 +547,8 @@ footer {
       /></a>
       <a href="#" target="_blank"
         ><img
-          src="https://github.com/ashish-kp/my_blog/blob/main/pictures/logos/Instagram-logo-gif.gif"
+          src="https://github.com/ashish-kp/my_blog/blob/main/pictures/logos/github_icon.PNG"
           alt="Instagram"
-          loading="lazy"
-          class="socicon"
       /></a>
       <a href="#" target="_blank"
         ><img
@@ -551,6 +560,7 @@ footer {
       <a href="#" target="_blank"
         ><img src="https://github.com/ashish-kp/my_blog/blob/main/pictures/logos/github-logo-octocat-.gif" alt="Github" class="socicon"
       /></a>
+    </footer>
     <!-- Scroll to top -->
   <!--<i class="scroll-up" id="scroll-up"
       ><img
