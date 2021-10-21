@@ -11,24 +11,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
 
-    <!-- Favicons -->
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="assets/icons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="assets/icons/favicon-32x32.png"
-    />
-
-    <!-- Animate CSS CDN -->
 <style>
  @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,700&display=swap");
 @media screen and (max-width: 720px) {
-  /*changes reflects on screen with a width of 720px and below*/
     nav {
       padding: 1.5rem 1rem;}
       
@@ -46,8 +31,6 @@
   }
 }
   
-
-/* Variables */
 :root {
   --font-family: 'IM Fell English SC', serif;
   --normal-font: 400;
@@ -63,13 +46,11 @@
   --line-height: 1.7rem;
   --transition: 0.3s;
 }
-/* Variables end */
 
 html {
   scroll-behavior: smooth;
 } 
 
-/* CSS Resets */
 * {
   margin: 0;
   padding: 0;
@@ -141,14 +122,15 @@ nav ul li {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2.5rem;
+  gap: 3.5rem;
   max-width: 68.75rem;
   margin: auto;
+  margin-top: 0.5rem;
 }
   
 .hero img {
-  height: 17.5rem;
-  width: 17.5rem;
+  height: 10.5rem;
+  width: 10.5rem;
   border-radius: 10%;
 }
 
@@ -156,7 +138,7 @@ nav ul li {
   width: 25rem;
   padding: 0.625rem;
   border-radius: 6px;
-  box-shadow: 0px 2px 15px 2px var(--primary-shadow);
+<!--   box-shadow: 0px 2px 15px 2px var(--primary-shadow); -->
 }
 
 .bio h1 {
@@ -271,59 +253,6 @@ nav ul li {
   margin-bottom: var(--bottom-margin-2);
 }
 
-.contact-form-container {
-  max-width: 40.75rem;
-  margin: 0 auto;
-  padding: 0.938rem;
-  border-radius: 5px;
-  box-shadow: 0 3px 10px var(--secondary-shadow);
-}
-  
-.contact-form-container label {
-  line-height: 2.7em;
-  font-weight: var(--bold-font);
-  color: var(--primary-color);
-}
-
-.contact-form-container textarea {
-  min-height: 6.25rem;
-  font-size: 14px;
-}
-
-.contact-form-container .input-field {
-  width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  border-radius: 5px;
-  border: none;
-  border: 2px outset var(--primary-color);
-  font-size: 0.875rem;
-  outline: none;
-}
-  
-  .input-field::placeholder {
-  padding: 0.5rem;
-  color: var(--primary-color);
-}
-  
-  .submit-btn {
-  width: 100%;
-  padding: 10px;
-  margin: 10px 0;
-  background-color: #fff;
-  border: 2px solid var(--primary-color);
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: var(--bold-font);
-  transition: var(--transition);
-}
-  
-  .submit-btn:hover {
-  background-color: var(--primary-color);
-  border: 2px solid var(--primary-color);
-  cursor: pointer;
-}
-
   .socials {
   display: flex;
   flex-direction: column;
@@ -335,6 +264,8 @@ nav ul li {
 .socicon {
   width: 2rem;
   height: 2rem;
+  margin-left: 2.5rem;
+  margin-right:2.5rem;
 }
   
 footer {
@@ -344,24 +275,14 @@ footer {
   margin: 2rem 0 0;
 }
 
-  .scroll-up {
-  position: fixed;
-  right: 0.5%;
-  bottom: 3%;
-  cursor: pointer;
-}
-
-.up-arrow {
-  width: 3rem;
-  height: 3rem;
-}
-  
-</style>
+  .footnote {
+    background-color: #FEF;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1rem;
+  }
  
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
-    />
+</style>
     <title>Ashish | Blog</title>
   </head>
 
@@ -370,7 +291,6 @@ footer {
       <h1 class = "name">ASHISH KUMAR PATRA</h1>
       <ul class="navigation">
         <li><a href="#about" class="nav-link">About</a></li>
-<!--         <li><a href="#skills" class="nav-link">Skills</a></li> -->
         <li><a href="#projects" class="nav-link">Projects</a></li>
         <li><a href="#contact" class="nav-link">Contact</a></li>
       </ul>
@@ -388,15 +308,13 @@ footer {
         loading="lazy"
         class="hero-img"
       />
-      <div class="bio animate__animated animate__shakeX">
+   <div class = "bio">
         <h2 class="bio-title">About Me</h2>
         <p class="bio-text">
-          I like to read, write, code and love stuff about physics, mathematics (though I'm not really good at it) and computer science in general. I like the typical fiction stuff when it comes to reading.
+          I like to read, write, code and love stuff about physics, mathematics (though I'm not really good at it) and computation in general. I like the typical fiction stuff, you know, Lovecraft, E.A.Poe et al. And then anything real "science fiction"ey...
         </p>
       </div>
 </section>
-
-    <!-- More about -->
 
     <section class="more-about">
       <h2>What will this "blog" show?</h2>
@@ -407,68 +325,11 @@ footer {
         - I hope to write some fiction later in the future so links to those will be here too.
       </p>
     </section>
-    <!-- Skills section -->
-    
-  <!--<section class="skills" id="skills">
-      <h2 class="skill-header">My Top Skills</h2>
 
-      <div class="skills-wrapper">
-        <div class="first-set animate__animated animate__pulse">
-          <img
-            src="assets/icons/icons8-html-5.svg"
-            alt=""
-            loading="lazy"
-            class="icon icon-card"
-          />
-          <img
-            src="assets/icons/icons8-css3.svg"
-            alt=""
-            loading="lazy"
-            class="icon icon-card"
-          />
-          <img
-            src="assets/icons/icons8-javascript.svg"
-            alt=""
-            loading="lazy"
-            class="icon icon-card"
-          />
-        </div>
-
-        <div class="second-set animate__animated animate__pulse">
-          <img
-            src="assets/icons/icons8-bootstrap.svg"
-            alt=""
-            loading="lazy"
-            class="icon icon-card"
-          />
-          <img
-            src="assets/icons/icons8-react-native.svg"
-            alt=""
-            loading="lazy"
-            class="icon icon-card"
-          />
-          <img
-            src="assets/icons/icons8-git.svg"
-            alt=""
-            loading="lazy"
-            class="icon icon-card"
-          />
-        </div>
-      </div>
-    </section> -->
-
-    <!-- Projects section -->
-    
  <section class="projects" id="projects">
       <h2 class="projects-title">Some of my Recent Projects</h2>
       <div class="projects-container">
         <div class="project-container project-card">
-         <!-- <img
-            src="assets/images/expenseTracker.png"
-            alt="expense-tracker"
-            loading="lazy"
-            class="project-pic"
-          /> -->
           <h3 class="project-title">Revivals and Fractional Revivals</h3>
           <p class="project-details">
          Briefly discussed about the phenomenon of revivals and fractional revivals in certain quantum systems.
@@ -501,60 +362,6 @@ footer {
        
      </div>
    </div> 
-
-    <!-- Contact section -->
-  <!-- <section class="contact" id="contact">
-      <h2>Get In Touch With Me</h2> 
-      <div class="contact-form-container">
-        <div class="contact-form">
-          <form action="https://formspree.io/f/xyylngw" method="POST">
-            <div class="form-control">
-              <label for="name">Name</label>
-              <input
-                type="text"
-                id="name"
-                name="sender-name"
-                placeholder="Enter Your Name"
-                class="input-field"
-                required
-              />
-            </div>
-            <div class="form-control">
-              <label for="email">Email</label>
-              <input
-                type="email"
-                id="email"
-                name="sender-email"
-                placeholder="Enter Your Email"
-                class="input-field"
-                required
-              />
-            </div>
-            <div class="form-control">
-              <label for="message">Message</label>
-              <textarea
-                id="message"
-                cols="60"
-                rows="10"
-                placeholder="Enter Your Message"
-                name="message"
-                class="input-field"
-                required
-              ></textarea>
-            </div>
-            <input
-              type="submit"
-              value="Submit"
-              id="submit-btn"
-              class="submit-btn"
-            />
-          </form>
-        </div>
-      </div>
-    </section> -->
-    <!-- Social accounts - Fixed to the right -->
-
-<!--      <div class="socials"> -->
     </br>
     <h2 style = "text-align : center" id = "contact">Get In Touch With Me</h2> 
     <footer id = "contact">
@@ -564,12 +371,14 @@ footer {
           alt="GMail"
           loading="lazy"
           class="socicon"
+          style = "width : 2.5rem; margin-top: -10rem;"
       /></a>
       <a href="#" target="_blank"
         ><img
           src="https://cliply.co/wp-content/uploads/2019/07/371907300_INSTAGRAM_ICON_400px.gif"
           alt="Instagram"
               class = "socicon"
+              style = "width: 3rem; height: 3rem; "
       /></a>
       <a href="#" target="_blank"
         ><img
@@ -577,61 +386,14 @@ footer {
           alt="Linkedin"
           loading="lazy"
           class="socicon"
+              style = "width:3rem; height:3rem;"
       /></a>
       <a href="#" target="_blank"
         ><img src="https://gist.githubusercontent.com/theAdityaNVS/f5b585d1082da2dffffea32434f37956/raw/7f9552d0a179b4f84059259fa878199e369b069c/GitHub-logo.gif" alt="Github" class="socicon"
       /></a>
     </footer>
-    <!-- Scroll to top -->
-  <!--<i class="scroll-up" id="scroll-up"
-      ><img
-        src="assets/icons/icons8-upward-arrow.gif"
-        class="socicon up-arrow"
-        alt=""
-    /></i>-->
-    <!-- Footer section -->
-    <!--
-       <footer>
-      <p class="copy">&copy; Copyright 2021</p>
-      <p class="copy">
-        Built with &#x2661; by
-        <a href="https://twitter.com/koladechris" target="_blank"
-          >Kolade Chris (Ksound)</a
-        >
-      </p>
-</footer>
--->
-    <!-- Website scripts -->
-    <script src="assets/js/app.js"></script>
-
-    <!-- Ion icons scripts -->
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-       
-   <script>
-     const burger = document.querySelector("#burger-menu");
-const ul = document.querySelector("nav ul");
-const nav = document.querySelector("nav");
-     
-     
-     burger.addEventListener("click", () => {
-  ul.classList.toggle("show");
-});
-     
-     const navLink = document.querySelectorAll(".nav-link");
-
-navLink.forEach((link) =>
-  link.addEventListener("click", () => {
-    ul.classList.remove("show");
-  })
-);
-     
-       </script>
+  <div class = "footnote">
+    <p>The code for this website was essentially copied from <a href = "https://www.freecodecamp.org/news/how-to-build-a-developer-portfolio-website/">here</a>.</p>
+  </div>
   </body>
 </html>
