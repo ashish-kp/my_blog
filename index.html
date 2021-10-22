@@ -1,397 +1,379 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!--CSS Styles -->
-<!--     <link rel="stylesheet" href="assets/css/styles.css" /> -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<style>
- @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,700&display=swap");
-@media screen and (max-width: 720px) {
+  <!--CSS Styles -->
+  <!--     <link rel="stylesheet" href="assets/css/styles.css" /> -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,700&display=swap");
+
+    @media screen and (max-width: 720px) {
+      nav {
+        padding: 1.5rem 1rem;
+      }
+
+      .bio {
+        width: 25rem;
+        padding: 0.625rem;
+        border-radius: 6px;
+        position: relative;
+      }
+
+      .name {
+        font-size: 1em;
+        margin-left: -1em;
+        color: blue;
+      }
+    }
+
+    :root {
+      --font-family: 'IM Fell English SC', serif;
+      --normal-font: 400;
+      --bold-font: 700;
+      --bolder-font: 900;
+      --bg-color: #fcfcfc;
+      --primary-color: #4756df;
+      --secondary-color: #ff7235;
+      --primary-shadow: #8b8eaf;
+      --secondary-shadow: #a17a69;
+      --bottom-margin: 0.5rem;
+      --bottom-margin-2: 1rem;
+      --line-height: 1.7rem;
+      --transition: 0.3s;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--primary-color);
+    }
+
+    a:hover {
+      color: var(--secondary-color);
+    }
+
+    body {
+      font-family: var(--font-family);
+    }
+
     nav {
-      padding: 1.5rem 1rem;}
-      
+      position: sticky;
+      top: 0;
+      left: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.5rem 3.5rem;
+      background-color: var(--bg-color);
+      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    nav h1 {
+      color: var(--primary-color);
+    }
+
+    nav a {
+      color: var(--primary-color);
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      color: var(--secondary-color);
+      border-bottom: 2px solid var(--secondary-color);
+    }
+
+    nav ul {
+      display: flex;
+      gap: 1.9rem;
+    }
+
+    nav ul li {
+      font-weight: var(--bold-font);
+    }
+
+    .burger-menu {
+      color: var(--primary-color);
+      font-size: 2rem;
+      border: 0;
+      background-color: transparent;
+      cursor: pointer;
+      display: none;
+    }
+
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 3.5rem;
+      max-width: 68.75rem;
+      margin: auto;
+      margin-top: 0.5rem;
+      margin-left: 0.5rem;
+    }
+
+    .hero img {
+      height: 10.5rem;
+      width: 10.5rem;
+      border-radius: 10%;
+    }
+
     .bio {
-  width: 25rem;
-  padding: 0.625rem;
-  border-radius: 6px;
-  position: relative;
-}
-  .name {
-    font-size: 1em;
-    margin-left: -1em;
-    color: blue;
-  }
-}
-  
-:root {
-  --font-family: 'IM Fell English SC', serif;
-  --normal-font: 400;
-  --bold-font: 700;
-  --bolder-font: 900;
-  --bg-color: #fcfcfc;
-  --primary-color: #4756df;
-  --secondary-color: #ff7235;
-  --primary-shadow: #8b8eaf;
-  --secondary-shadow: #a17a69;
-  --bottom-margin: 0.5rem;
-  --bottom-margin-2: 1rem;
-  --line-height: 1.7rem;
-  --transition: 0.3s;
-}
+      width: 25rem;
+      padding: 0.625rem;
+      border-radius: 6px;
+    }
 
-html {
-  scroll-behavior: smooth;
-} 
+    .bio h1 {
+      margin-bottom: var(--bottom-margin);
+    }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+    .bio p {
+      line-height: var(--line-height);
+      padding: 0.3rem 0;
+      font-family: 'Sawarabi Mincho', sans-serif;
+    }
 
-ul {
-  list-style-type: none;
-}
+    .more-about {
+      background-color: var(--bg-color);
+      padding: 1rem 6rem;
+    }
 
-a {
-  text-decoration: none;
-  color: var(--primary-color);
-}
+    .more-about h2 {
+      margin-bottom: var(--bottom-margin);
+      text-align: center;
+    }
 
-a:hover {
-  color: var(--secondary-color);
-}
+    .more-about p {
+      line-height: var(--line-height);
+      padding: 0.4rem;
+      font-family: 'Sawarabi Mincho', sans-serif;
+    }
 
-body {
-  font-family: var(--font-family);
-}
+    .skills {
+      max-width: 68.75rem;
+      margin: auto;
+      text-align: center;
+      margin-top: 2.5rem;
+    }
 
-nav {
-  position: sticky;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 1.5rem 3.5rem;
-  background-color: var(--bg-color);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-}
-  
-  nav h1 {
-  color: var(--primary-color);
-}
+    .skill-header {
+      margin-bottom: 1rem;
+    }
 
-nav a {
-  color: var(--primary-color);
-  transition: var(--transition);
-}
-nav a:hover {
-  color: var(--secondary-color);
-  border-bottom: 2px solid var(--secondary-color);
-}
+    .skills-wrapper img {
+      padding: 1.25rem;
+    }
 
-nav ul {
-  display: flex;
-  gap: 1.9rem;
-}
+    .icon {
+      width: 11.875rem;
+      height: 11.25rem;
+    }
 
-nav ul li {
-  font-weight: var(--bold-font);
-}
-  
-.burger-menu {
-  color: var(--primary-color);
-  font-size: 2rem;
-  border: 0;
-  background-color: transparent;
-  cursor: pointer;
-  display: none;
-}
+    .icon-card {
+      background-color: #fff;
+      border-radius: 11px;
+      box-shadow: 0 3px 10px var(--secondary-shadow);
+      padding: 20px;
+      margin: 10px;
+    }
 
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 3.5rem;
-  max-width: 68.75rem;
-  margin: auto;
-  margin-top: 0.5rem;
-}
-  
-.hero img {
-  height: 10.5rem;
-  width: 10.5rem;
-  border-radius: 10%;
-}
+    .projects {
+      background-color: var(--bg-color);
+      padding: 32px 0;
+      margin-top: 2rem;
+    }
 
-.bio {
-  width: 25rem;
-  padding: 0.625rem;
-  border-radius: 6px;
-}
+    .project-pic {
+      width: 65%;
+      height: 60%;
+    }
 
-.bio h1 {
-  margin-bottom: var(--bottom-margin);
-}
+    .projects-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-.bio p {
-  line-height: var(--line-height);
-  padding: 0.3rem 0;
-  font-family: 'Sawarabi Mincho', sans-serif;
-}
+    .projects-title {
+      text-align: center;
+      margin-bottom: 1rem;
+    }
 
-.more-about {
-  background-color: var(--bg-color);
-  padding: 1rem 6rem;
-}
+    .project-container {
+      text-align: center;
+      width: 21.875rem;
+      padding: 1rem;
+    }
 
-.more-about h2 {
-  margin-bottom: var(--bottom-margin);
-  text-align: center;
-}
+    .project-container p {
+      padding: 0.4rem;
+    }
 
-.more-about p {
-  line-height: var(--line-height);
-  padding: 0.4rem;
-  font-family: 'Sawarabi Mincho', sans-serif;
-}
+    .project-title {
+      margin-bottom: var(--bottom-margin);
+    }
 
-.skills {
-  max-width: 68.75rem;
-  margin: auto;
-  text-align: center;
-  margin-top: 2.5rem;
-}
+    .project-details {
+      margin-bottom: var(--bottom-margin);
+      font-family: 'Sawarabi Mincho', sans-serif;
+    }
 
-.skill-header {
-  margin-bottom: 1rem;
-}
+    .project-card {
+      background-color: #fff;
+      border-radius: 11px;
+      < !-- box-shadow: 0 3px 10px var(--primary-shadow);
+      -->border-color: #333;
+      border-style: solid;
+      padding: 20px;
+      margin: 10px;
+    }
 
-.skills-wrapper img {
-  padding: 1.25rem;
-}
+    .contact {
+      margin-top: 2rem;
+    }
 
-.icon {
-  width: 11.875rem;
-  height: 11.25rem;
-}
-  
-.icon-card {
-  background-color: #fff;
-  border-radius: 11px;
-  box-shadow: 0 3px 10px var(--secondary-shadow);
-  padding: 20px;
-  margin: 10px;
-}
+    .contact h2 {
+      text-align: center;
+      margin-bottom: var(--bottom-margin-2);
+    }
 
-.projects {
-  background-color: var(--bg-color);
-  padding: 32px 0;
-  margin-top: 2rem;
-}
+    .socials {
+      display: flex;
+      flex-direction: column;
+      position: fixed;
+      right: 1%;
+      bottom: 50%;
+    }
 
-.project-pic {
-  width: 65%;
-  height: 60%;
-}
+    .socicon {
+      width: 2rem;
+      height: 2rem;
+      margin-left: 2.5rem;
+      margin-right: 2.5rem;
+    }
 
-.projects-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-  
-.projects-title {
-  text-align: center;
-  margin-bottom: 1rem;
-}
+    footer {
+      background-color: var(--bg-color);
+      padding: 1.25rem;
+      text-align: center;
+      margin: 2rem 0 0;
+    }
 
-.project-container {
-  text-align: center;
-  width: 21.875rem;
-  padding: 1rem;
-}
-  
-.project-container p {
-  padding: 0.4rem;
-}
+    .footnote {
+      background-color: #FEF;
+      text-align: center;
+      padding: 1rem;
+      font-size: 1rem;
+    }
+  </style>
+  <title>Ashish | Blog</title>
+</head>
 
-.project-title {
-  margin-bottom: var(--bottom-margin);
-}
+<body>
+  <nav>
+    <h1 class="name">ASHISH KUMAR PATRA</h1>
+    <ul class="navigation">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <button class="burger-menu" id="burger-menu">
+      <ion-icon class="bars" name="menu-outline"></ion-icon>
+    </button>
+  </nav>
 
-.project-details {
-  margin-bottom: var(--bottom-margin);
-  font-family: 'Sawarabi Mincho', sans-serif;
-}
+  <!-- Hero Section -->
 
-.project-card {
-  background-color: #fff;
-  border-radius: 11px;
-  box-shadow: 0 3px 10px var(--primary-shadow);
-  padding: 20px;
-  margin: 10px;
-}
+  <section class="hero" id="about">
+    <img src="https://i.imgur.com/0M1hZR8.jpg" alt="ashish" loading="lazy" class="hero-img" />
+    <div class="bio">
+      <h2 class="bio-title">About Me</h2>
+      <p class="bio-text">
+        I like to read, write, code and love stuff about physics, mathematics (though I'm not really good at it) and computation in general. I like the typical fiction stuff, you know, Lovecraft, E.A.Poe et al. And then anything real "science fiction"ey...
+      </p>
+    </div>
+  </section>
 
-  .contact {
-  margin-top: 2rem;
-}
+  <section class="more-about">
+    <h2>What will this "blog" show?</h2>
+    <p>
+      - I'll share links to certain github repositories or other IDE pages where I've done some coding.
+    </p>
+    <p>
+      - I hope to write some fiction later in the future so links to those will be here too.
+    </p>
+  </section>
 
-.contact h2 {
-  text-align: center;
-  margin-bottom: var(--bottom-margin-2);
-}
-
-  .socials {
-  display: flex;
-  flex-direction: column;
-  position: fixed;
-  right: 1%;
-  bottom: 50%;
-}
-
-.socicon {
-  width: 2rem;
-  height: 2rem;
-  margin-left: 2.5rem;
-  margin-right:2.5rem;
-}
-  
-footer {
-  background-color: var(--bg-color);
-  padding: 1.25rem;
-  text-align: center;
-  margin: 2rem 0 0;
-}
-
-  .footnote {
-    background-color: #FEF;
-    text-align: center;
-    padding: 1rem;
-    font-size: 1rem;
-  }
- 
-</style>
-    <title>Ashish | Blog</title>
-  </head>
-
-  <body>
-     <nav>
-      <h1 class = "name">ASHISH KUMAR PATRA</h1>
-      <ul class="navigation">
-        <li><a href="#about" class="nav-link">About</a></li>
-        <li><a href="#projects" class="nav-link">Projects</a></li>
-        <li><a href="#contact" class="nav-link">Contact</a></li>
-      </ul>
-      <button class="burger-menu" id="burger-menu">
-        <ion-icon class="bars" name="menu-outline"></ion-icon>
-      </button>
-</nav>
-
-    <!-- Hero Section -->
-    
- <section class="hero" id="about">
-      <img
-        src="https://i.imgur.com/0M1hZR8.jpg"
-        alt="ashish"
-        loading="lazy"
-        class="hero-img"
-      />
-   <div class = "bio">
-        <h2 class="bio-title">About Me</h2>
-        <p class="bio-text">
-          I like to read, write, code and love stuff about physics, mathematics (though I'm not really good at it) and computation in general. I like the typical fiction stuff, you know, Lovecraft, E.A.Poe et al. And then anything real "science fiction"ey...
+  <section class="projects" id="projects">
+    <h2 class="projects-title">Some of my Recent Projects</h2>
+    <div class="projects-container">
+      <div class="project-container project-card">
+        <h3 class="project-title">Revivals and Fractional Revivals</h3>
+        <p class="project-details">
+          Briefly discussed about the phenomenon of revivals and fractional revivals in certain quantum systems.
         </p>
+        <a href="https://drive.google.com/file/d/1EnmGRT3whFDGnIUfVNWVLsKr3d_BPI36/view?usp=sharing" target="_blank" class="project-link">Check it Out</a>
       </div>
-</section>
+      <div class="project-container project-card">
+        <h3 class="project-title">Fractals in Chaos Games</h3>
+        <p class="project-details">
+          Using simple rules to draw points, fractals are generated. This is a very small project inspired from a Mathologer video.
+        </p>
+        <a href="https://github.com/ashish-kp/fractals_from_chaos_game" target="_blank" class="project-link">Check it Out</a>
+      </div>
+      <div class="project-container project-card">
+        <h3 class="project-title">Boids</h3>
+        <p class="project-details">
+          Outwardly complex looking behavior of a flock of organisms, follows three very simple rules.
+        </p>
+        <a href="https://www.glowscript.org/#/user/p.b.ashish786/folder/MyPrograms/program/boids" target="_blank" class="project-link">Check it Out</a></br>
+        <a href="https://github.com/ashish-kp/Boids_Boi" target="_blank" class="project-link">Code here</a>
+      </div>
 
-    <section class="more-about">
-      <h2>What will this "blog" show?</h2>
-      <p>
-        - I'll share links to certain github repositories or other IDE pages where I've done some coding. 
+  </section>
+
+  <div class="projects-container">
+    <div class="project-container project-card">
+      <h3 class="project-title">Xersei Freid's Interviews</h3>
+      <p class="project-details"> A B-class personnel's memoirs of the various people interviewed by them in the SCP facility.
+        <a class="project-link" href="https://github.com/ashish-kp/my_blog/blob/gh-pages/articles/scp_3049.html">Here</a>
       </p>
-      <p>
-        - I hope to write some fiction later in the future so links to those will be here too.
-      </p>
-    </section>
 
- <section class="projects" id="projects">
-      <h2 class="projects-title">Some of my Recent Projects</h2>
-      <div class="projects-container">
-        <div class="project-container project-card">
-          <h3 class="project-title">Revivals and Fractional Revivals</h3>
-          <p class="project-details">
-         Briefly discussed about the phenomenon of revivals and fractional revivals in certain quantum systems.
-          </p>
-          <a href="https://drive.google.com/file/d/1EnmGRT3whFDGnIUfVNWVLsKr3d_BPI36/view?usp=sharing" target="_blank" class="project-link">Check it Out</a>
-        </div>
-        <div class="project-container project-card">
-          <h3 class="project-title">Fractals in Chaos Games</h3>
-          <p class="project-details">
-            Using simple rules to draw points, fractals are generated. This is a very small project inspired from a Mathologer video.
-          </p>
-          <a href="https://github.com/ashish-kp/fractals_from_chaos_game" target="_blank" class="project-link">Check it Out</a>
-        </div>
-        <div class="project-container project-card">
-          <h3 class="project-title">Boids</h3>
-          <p class="project-details">
-            Outwardly complex looking behavior of a flock of organisms, follows three very simple rules.
-          </p>
-          <a href="https://www.glowscript.org/#/user/p.b.ashish786/folder/MyPrograms/program/boids" target="_blank" class="project-link">Check it Out</a></br>
-          <a href = "https://github.com/ashish-kp/Boids_Boi" target = "_blank" class = "project-link">Code here</a>
-   </div>
-
-    </section>
-    
-     <div class = "projects-container">
-     <div class="project-container project-card">
-       <h3 class = "project-title">Xersei Freid's Interviews</h3>
-       <p class = "project-details"> A B-class personnel's memoirs of the various people interviewed by them in the SCP facility. 
-       </p>
-       
-     </div>
-   </div> 
-    </br>
-    <h2 style = "text-align : center" id = "contact">Get In Touch With Me</h2> 
-    <footer id = "contact">
-      <a href="p.b.ashish786@gmail.com" target="_blank"
-        ><img
-          src="https://cdn.dribbble.com/users/4874/screenshots/3074660/media/867fc628a2ac456013b60186d9cf54ff.gif"
-          alt="GMail"
-          loading="lazy"
-          class="socicon"
-          style = "width : 2.5rem; margin-top: -10rem;"
-      /></a>
-      <a href="https://www.instagram.com/white_ronin_a/" target="_blank"
-        ><img
-          src="https://cliply.co/wp-content/uploads/2019/07/371907300_INSTAGRAM_ICON_400px.gif"
-          alt="Instagram"
-              class = "socicon"
-              style = "width: 3rem; height: 3rem; "
-      /></a>
-      <a href="#" target="_blank"
-        ><img
-          src="https://cliply.co/wp-content/uploads/2021/02/372102050_LINKEDIN_ICON_400px.gif"
-          alt="Linkedin"
-          loading="lazy"
-          class="socicon"
-              style = "width:3rem; height:3rem;"
-      /></a>
-      <a href="#" target="_blank"
-        ><img src="https://gist.githubusercontent.com/theAdityaNVS/f5b585d1082da2dffffea32434f37956/raw/7f9552d0a179b4f84059259fa878199e369b069c/GitHub-logo.gif" alt="Github" class="socicon"
-      /></a>
-    </footer>
-  <div class = "footnote">
-    <p>The code for this website was essentially copied from <a href = "https://www.freecodecamp.org/news/how-to-build-a-developer-portfolio-website/">here</a>.</p>
+    </div>
   </div>
-  </body>
+  </br>
+  <h2 style="text-align : center" id="contact">Get In Touch With Me</h2>
+  <footer id="contact">
+    <a href="p.b.ashish786@gmail.com" target="_blank"><img src="https://cdn.dribbble.com/users/4874/screenshots/3074660/media/867fc628a2ac456013b60186d9cf54ff.gif" alt="GMail" loading="lazy" class="socicon" style="width : 2.5rem; margin-top: -10rem;" /></a>
+    <a href="https://www.instagram.com/white_ronin_a/" target="_blank"><img src="https://cliply.co/wp-content/uploads/2019/07/371907300_INSTAGRAM_ICON_400px.gif" alt="Instagram" class="socicon" style="width: 3rem; height: 3rem; " /></a>
+    <a href="#" target="_blank"><img src="https://cliply.co/wp-content/uploads/2021/02/372102050_LINKEDIN_ICON_400px.gif" alt="Linkedin" loading="lazy" class="socicon" style="width:3rem; height:3rem;" /></a>
+    <a href="#" target="_blank"><img src="https://gist.githubusercontent.com/theAdityaNVS/f5b585d1082da2dffffea32434f37956/raw/7f9552d0a179b4f84059259fa878199e369b069c/GitHub-logo.gif" alt="Github" class="socicon" /></a>
+  </footer>
+  <div class="footnote">
+    <p>The code for this website was essentially copied from <a href="https://www.freecodecamp.org/news/how-to-build-a-developer-portfolio-website/">here</a>.</p>
+  </div>
+</body>
+
 </html>
