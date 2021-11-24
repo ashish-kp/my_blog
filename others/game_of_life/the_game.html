@@ -1,0 +1,101 @@
+<head>
+  <script language="javascript" type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.2.13/p5.min.js"></script>
+
+</head>
+
+<body>
+  <script>
+    function make2DArray(cols, rows) {
+      let arr = new Array(cols);
+      for (let i = 0; i < arr.length; i++) {
+        arr[i] = new Array(rows);
+      }
+      return arr;
+    }
+    let grid;
+    let cols;
+    let rows;
+    let resolution = 3;
+
+    function setup() {
+      createCanvas(1200, 600);
+      cols = width / resolution;
+      rows = height / resolution;
+      let x_param = 1 + floor(random(10));
+      let y_param = 1 + floor(random(10));
+      console.log(x_param, y_param);
+      grid = make2DArray(cols, rows);
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          grid[i][j] = floor(random(2));
+          // grid[i][j] = Cell(i, j, x_param, y_param);
+          // grid[i][j] = Cell2(i, j);
+        }
+      }
+    }
+
+    function draw() {
+      background(0);
+      let next = make2DArray(cols, rows);
+      let previous = make2DArray(cols, rows);
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          let x = i * resolution;
+          let y = j * resolution;
+          if (grid[i][j] == 1) {
+            // stroke(0);
+            fill(255, 255, 255);
+            rect(x, y, resolution, resolution);
+          }
+        }
+      }
+      for (let i = 0; i < cols; i++) {
+        for (let j = 0; j < rows; j++) {
+          let state = grid[i][j];
+          let sum = 0;
+          let neighbours = count(grid, i, j);
+          if (state == 0 && neighbours == 3) {
+            next[i][j] = 1;
+          } else if (state == 1 && (neighbours < 2 || neighbours > 3)) {
+            next[i][j] = 0;
+          } else {
+            next[i][j] = state;
+            fill(0, 255, 0);
+          }
+        }
+      }
+      previous = grid;
+      grid = next;
+    }
+
+    function count(grid, x, y) {
+      let sum = 0;
+      for (let i = -1; i < 2; i++) {
+        for (let j = -1; j < 2; j++) {
+          let col = (x + i + cols) % cols;
+          let row = (y + j + rows) % rows;
+          if (i != x && j != y) {
+            sum += grid[col][row];
+          }
+        }
+      }
+      return sum;
+    }
+
+    function Cell(x, y, x_param, y_param) {
+      let some_state = 0;
+      if (x % x_param && y % y_param) {
+        some_state = 1;
+      }
+      return some_state;
+    }
+
+    function Cell2(x, y) {
+      some_state = 0;
+      if ((x == int(cols / 2) && y == int(rows / 2)) || (x == int(cols / 2 + 1) && y == int(rows / 2 + 1)) || (x == int(cols / 2) && y == int(rows / 2 + 2))) {
+        some_state = 1;
+      }
+      return some_state;
+    }
+  </script>
+</body>
