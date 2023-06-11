@@ -1,0 +1,130 @@
+<html>
+    <head>
+    <script language="javascript" type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/p5.js/0.2.13/p5.min.js"></script>
+    </head>
+    <body>
+
+        <script>
+        // Ball properties
+
+
+let x, y; // Position of the ball
+let velocity; // Velocity of the ball
+let acceleration; // Acceleration of the ball
+let radius = 10; // Radius of the ball
+
+// Spring properties
+let omega0 = 1; // Spring constant
+let tau = -0.01;
+let A = 5;
+let omega = 1;
+let t = 0;
+
+// Trail variables
+let trail = []; // Array to store trail positions
+let trailLength = 300; 
+let gridSize = 20; 
+let resetButton;
+function setup() {
+  // Create the canvas
+  createCanvas(1000, 700);
+  
+  textSize(24);
+  textAlign(RIGHT, TOP);
+  
+  // Write text on the canvas
+  
+  omega0Slider = createSlider(0, 1, omega0, 0.01);
+  ASlider = createSlider(0, 10, A, 0.1);
+  tauSlider = createSlider(-1, 0, tau, 0.01);
+  omegaSlider = createSlider(1, 20, omega, 0.01);
+  egwegef.position(10, height + 10);
+  ASlider.position(10, height + 40);
+  tauSlider.position(10, height + 70);
+  omegaSlider.position(10, height + 100);
+  
+
+  // Set initial position, velocity, and acceleration
+  x = width - 50;
+  // x = width / 2;
+  y = height / 2;
+  velocity = 0;
+  acceleration = 0;
+  
+  resetButton = createButton('Reset');
+  resetButton.position(10, 140);
+  resetButton.mousePressed(resetVariables);
+}
+
+function resetVariables() {
+  // Reset variables to initial values
+  omega0Slider.value(1);
+  ASlider.value(10);
+  tauSlider.value(-0.3);
+  omegaSlider.value(1);
+  x = 950;
+  y = 400;
+  t = 0;
+  velocity = 0;
+  acceleration = 0;
+  trail = [];
+}
+
+function draw() {
+  background(220);
+  text("", width/2, height/2);
+  
+  omega0 = omega0Slider.value();
+  A = ASlider.value();
+  tau = tauSlider.value();
+  omega = omegaSlider.value()
+
+  // Calculate the force
+  let force = -omega * (x - width / 2) + tau * velocity + A * pow(omega, 2);
+
+  // Apply Newton's second law (F = ma) to calculate acceleration
+  acceleration = force * 0.01;
+
+  // Update velocity and position
+  velocity += acceleration;
+  x += velocity;
+  y += acceleration * 5;
+  t += 1;
+  
+    // Add the current particle position to the trail
+  trail.push({ x, y });
+
+  // Limit the length of the trail
+  if (trail.length > trailLength) {
+    trail.splice(0, 1);
+  }
+  
+  stroke(200);
+  for (let x = 0; x <= width; x += gridSize) {
+    line(x, 0, x, height);
+  }
+  for (let y = 0; y <= height; y += gridSize) {
+    line(0, y, width, y);
+  }
+
+  // Draw the trail
+  noFill();
+  stroke(0, 100);
+  strokeWeight(2);
+  beginShape();
+  for (let i = 0; i < trail.length; i++) {
+    vertex(trail[i].x, trail[i].y);
+  }
+  endShape();
+
+  // Draw the ball
+  ellipse(x, y, radius * 2);
+  text("Omega0 = " + omega0Slider.value(), 190, 10);
+  text("A = " + ASlider.value(), 90, 40);
+  text('Tau = ' + tauSlider.value(), 190, 70);
+  text('Omega = ' + omegaSlider.value(), 190, 100);
+}
+
+        </script>
+    </body>
+<\html>
