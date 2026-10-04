@@ -1,400 +1,681 @@
-</html>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Ashish Kumar Patra | Quantum algorithms for molecular simulation</title>
+  <meta name="description" content="Ashish Kumar Patra is a quantum analyst working on hybrid quantum-classical algorithms for molecular simulation. Publications, research, projects and writing.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Ashish Kumar Patra">
+  <meta property="og:description" content="Hybrid quantum-classical algorithms for molecular simulation. Publications, research, projects and writing.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ashishkp.in/">
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('theme');
+        if (saved === 'light' || saved === 'dark') document.documentElement.setAttribute('data-theme', saved);
+      } catch (e) {}
+    })();
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F55D4'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='white'%3EA%3C/text%3E%3C/svg%3E">
 
-  <!--CSS Styles -->
-  <!--     <link rel="stylesheet" href="assets/css/styles.css" /> -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=IM+Fell+English+SC&family=Sawarabi+Mincho&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
 
   <style>
-    @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,900;1,700&display=swap");
-
-    @media screen and (max-width: 720px) {
-      nav {
-        padding: 1.5rem 1rem;
-      }
-
-      .bio {
-        width: 25rem;
-        padding: 0.625rem;
-        border-radius: 6px;
-        position: relative;
-      }
-
-      .name {
-        font-size: 1em;
-        margin-left: -1em;
-        color: blue;
-      }
-    }
-
     :root {
-      --font-family: 'IM Fell English SC', serif;
-      --normal-font: 400;
-      --bold-font: 700;
-      --bolder-font: 900;
-      --bg-color: #fcfcfc;
-      --primary-color: #4756df;
-      --secondary-color: #ff7235;
-      --primary-shadow: #8b8eaf;
-      --secondary-shadow: #a17a69;
-      --bottom-margin: 0.5rem;
-      --bottom-margin-2: 1rem;
-      --line-height: 1.7rem;
-      --transition: 0.3s;
+      --ground: #F7F8FA;
+      --ink: #14213D;
+      --muted: #566074;
+      --rule: #D8DDE6;
+      --accent: #2F55D4;
+      --serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
+      --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
     }
 
-    html {
-      scroll-behavior: smooth;
+    :root { color-scheme: light; }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --ground: #0E1423;
+      --ink: #E6EAF3;
+      --muted: #9AA5BC;
+      --rule: #242E48;
+      --accent: #8EA6FF;
     }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        color-scheme: dark;
+        --ground: #0E1423;
+        --ink: #E6EAF3;
+        --muted: #9AA5BC;
+        --rule: #242E48;
+        --accent: #8EA6FF;
+      }
     }
 
-    ul {
-      list-style-type: none;
-    }
+    *, *::before, *::after { box-sizing: border-box; }
 
-    a {
-      text-decoration: none;
-      color: var(--primary-color);
-    }
-
-    a:hover {
-      color: var(--secondary-color);
-    }
+    html { scroll-behavior: smooth; scroll-padding-top: 2rem; }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
     body {
-      font-family: var(--font-family);
+      margin: 0;
+      background: var(--ground);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 1rem;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
 
-    nav {
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 0.2em; }
+    a:hover { text-decoration-thickness: 2px; }
+    a:focus-visible, button:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    .skip {
+      position: absolute; left: -999px; top: 0.5rem;
+      background: var(--ink); color: var(--ground);
+      padding: 0.5rem 0.75rem; z-index: 10;
+    }
+    .skip:focus { left: 0.5rem; }
+
+    /* ---------- Layout ---------- */
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(15rem, 20rem) minmax(0, 1fr);
+      column-gap: clamp(2.5rem, 7vw, 7rem);
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 0 clamp(1.25rem, 4vw, 3rem);
+    }
+
+    .side {
       position: sticky;
       top: 0;
-      left: 0;
-      z-index: 1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 1.5rem 3.5rem;
-      background-color: var(--bg-color);
-      box-shadow: 0 3px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    nav h1 {
-      color: var(--primary-color);
-    }
-
-    nav a {
-      color: var(--primary-color);
-      transition: var(--transition);
-    }
-
-    nav a:hover {
-      color: var(--secondary-color);
-      border-bottom: 2px solid var(--secondary-color);
-    }
-
-    nav ul {
-      display: flex;
-      gap: 1.9rem;
-    }
-
-    nav ul li {
-      font-weight: var(--bold-font);
-    }
-
-    .burger-menu {
-      color: var(--primary-color);
-      font-size: 2rem;
-      border: 0;
-      background-color: transparent;
-      cursor: pointer;
-      display: none;
-    }
-
-    .hero {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 3.5rem;
-      max-width: 68.75rem;
-      margin: auto;
-      margin-top: 0.5rem;
-      margin-left: 0.5rem;
-    }
-
-    .hero img {
-      height: 10.5rem;
-      width: 10.5rem;
-      border-radius: 10%;
-    }
-
-    .bio {
-      width: 25rem;
-      padding: 0.625rem;
-      border-radius: 6px;
-    }
-
-    .bio h1 {
-      margin-bottom: var(--bottom-margin);
-    }
-
-    .bio p {
-      line-height: var(--line-height);
-      padding: 0.3rem 0;
-      font-family: 'Sawarabi Mincho', sans-serif;
-    }
-
-    .more-about {
-      background-color: var(--bg-color);
-      padding: 1rem 6rem;
-    }
-
-    .more-about h2 {
-      margin-bottom: var(--bottom-margin);
-      text-align: center;
-    }
-
-    .more-about p {
-      line-height: var(--line-height);
-      padding: 0.4rem;
-      font-family: 'Sawarabi Mincho', sans-serif;
-    }
-
-    .skills {
-      max-width: 68.75rem;
-      margin: auto;
-      text-align: center;
-      margin-top: 2.5rem;
-    }
-
-    .skill-header {
-      margin-bottom: 1rem;
-    }
-
-    .skills-wrapper img {
-      padding: 1.25rem;
-    }
-
-    .icon {
-      width: 11.875rem;
-      height: 11.25rem;
-    }
-
-    .icon-card {
-      background-color: #fff;
-      border-radius: 11px;
-      box-shadow: 0 3px 10px var(--secondary-shadow);
-      padding: 20px;
-      margin: 10px;
-    }
-
-    .projects {
-      background-color: var(--bg-color);
-      padding: 32px 0;
-      margin-top: 2rem;
-    }
-
-    .project-pic {
-      width: 65%;
-      height: 60%;
-    }
-
-    .projects-container {
-      /*display: flex;*/
-      align-items: center;
-      justify-content: center;
-    }
-
-    .projects-title {
-      text-align: center;
-      margin-bottom: 1rem;
-    }
-
-    .project-container {
-      text-align: center;
-      width: 80%;
-      padding: 1rem;
-      margin-left: 10%;
-      padding-left: 10%;
-    }
-
-    .project-container p {
-      padding: 0.4rem;
-    }
-
-    .project-title {
-      margin-bottom: var(--bottom-margin);
-    }
-
-    .project-details {
-      margin-bottom: var(--bottom-margin);
-      font-family: 'Sawarabi Mincho', sans-serif;
-    }
-
-    .project-card {
-      background-color: #fff;
-      border-radius: 11px;
-      < !-- box-shadow: 0 3px 10px var(--primary-shadow);
-      -->border-color: #333;
-      border-style: solid;
-      padding: 20px;
-      margin: 10px;
-    }
-
-    .contact {
-      margin-top: 2rem;
-    }
-
-    .contact h2 {
-      text-align: center;
-      margin-bottom: var(--bottom-margin-2);
-    }
-
-    .socials {
+      align-self: start;
+      max-height: 100vh;
+      max-height: 100dvh;
+      overflow-y: auto;
+      padding: clamp(2.5rem, 9vh, 5.5rem) 0 2rem;
       display: flex;
       flex-direction: column;
-      position: fixed;
-      right: 1%;
-      bottom: 50%;
+      gap: 2.25rem;
     }
 
-    .socicon {
-      width: 2rem;
-      height: 2rem;
-      margin-left: 2.5rem;
-      margin-right: 2.5rem;
+    /* ---------- Name ---------- */
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: clamp(3.5rem, 7.2vw, 5.75rem);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
     }
+    h1 span { display: block; }
+
+    .role { margin: 1.25rem 0 0; font-size: 1.0625rem; line-height: 1.45; }
+    .role small { display: block; margin-top: 0.25rem; color: var(--muted); font-size: 0.9375rem; }
+
+    /* ---------- Side navigation ---------- */
+    .nav { display: flex; flex-direction: column; gap: 0.1rem; margin: 0; padding: 0; list-style: none; }
+    .nav a {
+      display: inline-block;
+      padding: 0.2rem 0;
+      color: var(--muted);
+      text-decoration: none;
+      font-size: 0.9375rem;
+    }
+    .nav a:hover { color: var(--ink); }
+    .nav a[aria-current="true"] { color: var(--ink); font-weight: 600; }
+    .nav a[aria-current="true"]::before {
+      content: "";
+      display: inline-block;
+      width: 1.25rem; height: 2px;
+      margin-right: 0.6rem;
+      vertical-align: middle;
+      background: var(--accent);
+    }
+
+    .contact { margin: 0; padding: 0; list-style: none; font-size: 0.9375rem; }
+    .contact li + li { margin-top: 0.3rem; }
+    .contact .cv { margin-top: 0.9rem; font-weight: 600; }
+
+    .theme {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 2px;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+    }
+    .theme button {
+      margin: 0;
+      padding: 0.25rem 0.85rem;
+      border: 0;
+      border-radius: 999px;
+      background: transparent;
+      color: var(--muted);
+      font: inherit;
+      font-size: 0.875rem;
+      cursor: pointer;
+    }
+    .theme button:hover { color: var(--ink); }
+    .theme button[aria-pressed="true"] { background: var(--ink); color: var(--ground); }
+
+    /* ---------- Main ---------- */
+    main { padding: clamp(2.5rem, 9vh, 5.5rem) 0 4rem; max-width: 46rem; }
+
+    .lede {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(1.6rem, 2.6vw, 2.0625rem);
+      line-height: 1.25;
+      letter-spacing: -0.005em;
+      text-wrap: pretty;
+    }
+    .about p:not(.lede) { margin: 1.25rem 0 0; color: var(--muted); max-width: 38rem; }
+
+    section { padding-top: 4rem; }
+    section:first-child { padding-top: 0; }
+
+    h2 {
+      margin: 0 0 1.25rem;
+      font-family: var(--serif);
+      font-weight: 400;
+      font-size: 2rem;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+    }
+
+    .entry {
+      display: grid;
+      grid-template-columns: 8.5rem minmax(0, 1fr);
+      column-gap: 2rem;
+      padding: 1.4rem 0;
+      border-top: 1px solid var(--rule);
+    }
+    .when {
+      margin: 0.15rem 0 0;
+      color: var(--muted);
+      font-size: 0.875rem;
+      font-variant-numeric: tabular-nums;
+    }
+    h3 { margin: 0; font-size: 1.0625rem; font-weight: 600; line-height: 1.35; text-wrap: balance; }
+    h3 a { color: var(--ink); text-decoration-color: var(--rule); }
+    h3 a:hover { color: var(--accent); text-decoration-color: currentColor; }
+    .where { margin: 0.15rem 0 0; color: var(--muted); }
+    .meta { margin: 0.35rem 0 0; color: var(--muted); font-size: 0.9375rem; }
+    .meta strong { color: var(--ink); font-weight: 600; }
+    .summary { margin: 0.5rem 0 0; max-width: 38rem; }
+
+    .what ul { margin: 0.75rem 0 0; padding-left: 1.1rem; max-width: 40rem; }
+    .what li { margin-top: 0.45rem; padding-left: 0.2rem; }
+    .what li::marker { color: var(--muted); }
+
+    .tag {
+      display: inline-block;
+      margin-left: 0.5rem;
+      padding: 0 0.5rem;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      color: var(--muted);
+      font-size: 0.8125rem;
+      font-weight: 500;
+      vertical-align: 0.1em;
+    }
+
+    .links { margin: 0.5rem 0 0; font-size: 0.9375rem; }
+    .links a + a { margin-left: 1rem; }
 
     footer {
-      background-color: var(--bg-color);
-      padding: 1.25rem;
-      text-align: center;
-      margin: 2rem 0 0;
+      margin-top: 4rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--rule);
+      color: var(--muted);
+      font-size: 0.875rem;
     }
 
-    .footnote {
-      background-color: #FEF;
-      text-align: center;
-      padding: 1rem;
-      font-size: 1rem;
+    /* ---------- Narrow screens ---------- */
+    @media (max-width: 62rem) {
+      .layout { grid-template-columns: 1fr; }
+      .side { position: static; max-height: none; overflow: visible; padding-bottom: 0; gap: 1.5rem; }
+      main { padding-top: 2.5rem; }
+      .nav { flex-direction: row; flex-wrap: wrap; gap: 0.25rem 1.25rem; }
+      .nav a[aria-current="true"]::before { display: none; }
+    }
+
+    @media (max-width: 40rem) {
+      .entry { grid-template-columns: 1fr; row-gap: 0.35rem; }
+      .when { margin: 0; }
+      section { padding-top: 3rem; }
     }
   </style>
-  <title>Ashish | Blog</title>
 </head>
 
 <body>
-  <nav>
-    <h1 class="name">ASHISH KUMAR PATRA</h1>
-    <ul class="navigation">
-      <li><a href="#about" class="nav-link">About</a></li>
-      <li><a href="#projects" class="nav-link">Projects</a></li>
-      <li><a href="#contact" class="nav-link">Contact</a></li>
-    </ul>
-    <button class="burger-menu" id="burger-menu">
-      <ion-icon class="bars" name="menu-outline"></ion-icon>
-    </button>
-  </nav>
+  <a class="skip" href="#about">Skip to content</a>
 
-  <!-- Hero Section -->
-
-  <section class="hero" id="about">
-    <img src="https://i.imgur.com/0M1hZR8.jpg" alt="ashish" loading="lazy" class="hero-img" />
-    <div class="bio">
-      <h2 class="bio-title">About Me</h2>
-      <p class="bio-text">
-        I like to read, write, code and love stuff about physics, mathematics (though I'm not really good at it) and computation in general. I like the typical fiction stuff, you know, Lovecraft, E.A.Poe et al. And then anything real "science fiction"ey...
-      </p>
-    </div>
-  </section>
-
-  <section class="more-about">
-    <h2>What will this "blog" show?</h2>
-    <p>
-      - I'll share links to certain github repositories or other IDE pages where I've done some coding.
-    </p>
-    <p>
-      - I hope to write some fiction later in the future so links to those will be here too.
-    </p>
-  </section>
-
-  <section class="projects" id="projects">
-    <h2 class="projects-title">Some of my Recent Projects</h2>
-    <div class="projects-container">
-      <div class="project-container project-card">
-        <h3 class="project-title">Revivals and Fractional Revivals</h3>
-        <p class="project-details">
-          Briefly discussed about the phenomenon of revivals and fractional revivals in certain quantum systems.
+  <div class="layout">
+    <header class="side">
+      <div>
+        <h1><span>Ashish</span><span>Kumar</span><span>Patra</span></h1>
+        <p class="role">Quantum Analyst
+          <small>QClairvoyance Quantum Labs, India</small>
         </p>
-        <a href="https://drive.google.com/file/d/1EnmGRT3whFDGnIUfVNWVLsKr3d_BPI36/view?usp=sharing" target="_blank" class="project-link">Check it Out</a>
-      </div>
-      <div class="project-container project-card">
-        <h3 class="project-title">Fractals in Chaos Games</h3>
-        <p class="project-details">
-          Using simple rules to draw points, fractals are generated. This is a very small project inspired from a Mathologer video.
-        </p>
-        <a href="https://github.com/ashish-kp/fractals_from_chaos_game" target="_blank" class="project-link">Check it Out</a>
-      </div>
-      <div class="project-container project-card">
-        <h3 class="project-title">Boids</h3>
-        <p class="project-details">
-          Outwardly complex looking behavior of a flock of organisms, follows three very simple rules.
-        </p>
-        <a href="https://www.glowscript.org/#/user/p.b.ashish786/folder/MyPrograms/program/boids" target="_blank" class="project-link">Check it Out</a></br>
-        <a href="https://github.com/ashish-kp/Boids_Boi" target="_blank" class="project-link">Code here</a>
       </div>
 
-      <div class="projects-container">
-    <div class="project-container project-card">
-      <h3 class="project-title">Xersei Freid's Interviews</h3>
-      <p class="project-details"> A B-class personnel's memoirs of the various people interviewed by them in the SCP facility.
-        </br><a class="project-link" href="articles/scp_3049.html">Here</a>
-      </p>
+      <nav aria-label="Sections">
+        <ul class="nav">
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#publications">Publications</a></li>
+          <li><a href="#research">Research projects</a></li>
+          <li><a href="#education">Education</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#talks">Talks and posters</a></li>
+          <li><a href="#projects">Projects and writing</a></li>
+        </ul>
+      </nav>
 
-    </div>
-  </div>
-  <div class="projects-container">
-    <div class="project-container project-card">
-      <h3 class="project-title"> Game Of Life </h3>
-      <p class="project-details"> Yes. Game Of Life. Again. You want to know why? I say, why not. Learnt from TheCodingTrain.
-        </br>
-        <a class="project-link" href="others/game_of_life/the_game.html">Here </a>
-      <p class="project-details"> No customisation yet, just pixels coming to life and dying. </p>
-    </div>
+      <ul class="contact">
+        <li><a href="mailto:p.b.ashish786@gmail.com">p.b.ashish786@gmail.com</a></li>
+        <li><a href="https://github.com/ashish-kp" rel="noopener">GitHub</a></li>
+        <!-- Add when ready:
+        <li><a href="YOUR_GOOGLE_SCHOLAR_URL" rel="noopener">Google Scholar</a></li>
+        <li><a href="YOUR_LINKEDIN_URL" rel="noopener">LinkedIn</a></li>
+        -->
+        <li class="cv"><a href="assets/cv.pdf">Download CV (PDF)</a></li>
+      </ul>
+
+      <div class="theme" role="group" aria-label="Colour theme">
+        <button type="button" data-theme-choice="light" aria-pressed="false">Light</button>
+        <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+      </div>
+    </header>
+
+    <main id="main">
+
+      <!-- ================= About ================= -->
+      <section id="about" class="about" aria-label="About">
+        <p class="lede">I develop hybrid quantum-classical algorithms for molecular simulation, from machine-learning-assisted subspace selection within density matrix embedding to resource-efficient primitives for early fault-tolerant hardware.</p>
+        <p>My background is in continuous-variable quantum optics and hardware benchmarking on superconducting devices. Outside work I read and write fiction, and I like building small simulations: boids, chaos-game fractals and cellular automata.</p>
+      </section>
+
+      <!-- ================= Experience ================= -->
+      <section id="experience" aria-labelledby="h-experience">
+        <h2 id="h-experience">Experience</h2>
+        <article class="entry">
+          <p class="when">Jul 2024 &ndash; present</p>
+          <div class="what">
+            <h3>Quantum Analyst</h3>
+            <p class="where">QClairvoyance Quantum Labs Pvt. Ltd.</p>
+            <ul>
+              <li>Built and benchmarked a DMET&ndash;SQD simulation pipeline for ligand-like molecular Hamiltonians on 20&ndash;30 qubits, validated against DMET-FCI reference energies.</li>
+              <li>Ran a large-scale experimental study of DMET-SQD with the LUCJ ansatz on IQM&rsquo;s 24-qubit Sirius superconducting processor (up to 16 operational qubits), estimating chemically accurate ground-state energies across benchmark molecules.</li>
+              <li>Developed QSCI-RBM, a compact subspace generation protocol using Restricted Boltzmann Machines within DMET. On a Carmofur&ndash;SARS-CoV-2 M<sup>pro</sup> protein&ndash;ligand complex it reached chemical accuracy with about 4% of the configuration subspace, versus about 20% for standard SQD, which did not reach it.</li>
+              <li>Designed a polylogarithmic-time quantum algorithm for the Laplace transform using eigenvalue transformation, and analysed its resource scaling.</li>
+              <li>Contributed to VQE resource estimation for small molecules and to a DMET-VQE framework using the COMPASS ansatz for strongly correlated systems.</li>
+            </ul>
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= Publications ================= -->
+      <section id="publications" aria-labelledby="h-publications">
+        <h2 id="h-publications">Publications</h2>
+
+        <article class="entry">
+          <p class="when">Jul 2026</p>
+          <div class="what">
+            <h3><a href="https://arxiv.org/abs/2607.20585" rel="noopener">Machine-Learned Compact Subspace Generation for Quantum Selected Configuration Interaction within Density Matrix Embedding Framework</a></h3>
+            <p class="meta"><strong>A. K. Patra</strong>, Anurag K. S. V., Ruchika Bhat, Sai Shankar P., Rahul Maitra, Jaiganesh G.</p>
+            <p class="meta">arXiv:2607.20585</p>
+            <p class="summary">Introduces QSCI-RBM and applies it to a Carmofur&ndash;M<sup>pro</sup> complex, reaching chemical accuracy with about 4% of the configuration subspace.</p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Jul 2026</p>
+          <div class="what">
+            <h3><a href="https://arxiv.org/abs/2607.20943" rel="noopener">An Analytically Trained Variational Surrogate for Quantum Phase Estimation on NISQ Hardware</a></h3>
+            <p class="meta">Mousumi Kundu, <strong>A. K. Patra</strong>, Anurag K. S. V., Ruchika Bhat, Sai Shankar P., Alok Shukla, Jaiganesh G.</p>
+            <p class="meta">arXiv:2607.20943</p>
+            <p class="summary">A shallow variational circuit trained analytically to reproduce QPE measurement distributions for molecular ground-state energies, avoiding the deep circuits direct QPE needs.</p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Apr 2026</p>
+          <div class="what">
+            <h3><a href="https://arxiv.org/abs/2604.01983" rel="noopener">Towards Chemically Accurate and Scalable Quantum Simulations on IQM Quantum Hardware: A Quantum-HPC Hybrid Approach</a></h3>
+            <p class="meta">Anurag K. S. V.&dagger;, <strong>A. K. Patra</strong>&dagger;, et al. (&dagger; equal contribution)</p>
+            <p class="meta">arXiv:2604.01983</p>
+            <p class="summary">DMET-SQD with the LUCJ ansatz on IQM&rsquo;s 24-qubit Sirius processor, with a shot-dependent convergence analysis that sets practical limits for hybrid workflows.</p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Apr 2026</p>
+          <div class="what">
+            <h3><a href="https://arxiv.org/abs/2604.19470" rel="noopener">Advancing Practical Quantum Embedding Simulations via Operator Commutativity Based State Preparation for Complex Chemical Systems</a></h3>
+            <p class="meta">Dibyendu Mondal, <strong>A. K. Patra</strong>, et al.</p>
+            <p class="meta">Chem. Sci. 2026; arXiv:2604.19470</p>
+            <p class="summary">A DMET-VQE embedding framework built on the dynamically constructed COMPASS ansatz for strongly correlated molecular systems.</p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Jan 2026</p>
+          <div class="what">
+            <h3><a href="https://arxiv.org/abs/2601.09763" rel="noopener">Fractional Revival Dynamics in Kerr-Type Systems: Angular Momentum Moments and Classical Analogs</a></h3>
+            <p class="meta"><strong>A. K. Patra</strong>, Saikumar Krithivasan</p>
+            <p class="meta">arXiv:2601.09763</p>
+            <p class="summary">Analytical revival structures from angular momentum moments, with higher-order signatures of nonclassical evolution and their classical phase-space analogs.</p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Dec 2025</p>
+          <div class="what">
+            <h3><a href="https://arxiv.org/abs/2512.17980" rel="noopener">A Polylogarithmic-Time Quantum Algorithm for the Laplace Transform</a></h3>
+            <p class="meta">Akash Kumar Singh, <strong>A. K. Patra</strong>, et al.</p>
+            <p class="meta">arXiv:2512.17980</p>
+            <p class="summary">A poly-log scaling algorithm via eigenvalue transformation, offering a general framework for efficient functional evaluation on quantum computers.</p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Nov 2025</p>
+          <div class="what">
+            <h3><a href="https://arxiv.org/abs/2511.22158" rel="noopener">Quantum Simulation of Ligand-like Molecules through Sample-Based Quantum Diagonalization in Density Matrix Embedding Framework</a></h3>
+            <p class="meta"><strong>A. K. Patra</strong>, et al.</p>
+            <p class="meta">arXiv:2511.22158</p>
+            <p class="summary">A fragment-based DMET-SQD pipeline in strong agreement with DMET-FCI benchmarks for molecular systems of 20&ndash;30 qubits.</p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Jun 2025</p>
+          <div class="what">
+            <h3><a href="https://doi.org/10.22541/au.176341037.72812424/v1" rel="noopener">Survey of Quantum Algorithms: Foundations, Frameworks and Applications</a></h3>
+            <p class="meta"><strong>A. K. Patra</strong>, et al.</p>
+            <p class="meta">Authorea preprint</p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Feb 2025</p>
+          <div class="what">
+            <h3><a href="https://doi.org/10.1002/jcc.70379" rel="noopener">Resource Estimation for VQE on Small Molecules: Impact of Fermion Mappings and Hamiltonian Reductions</a><span class="tag">Peer-reviewed</span></h3>
+            <p class="meta">Anurag K. S. V., <strong>A. K. Patra</strong>, et al.</p>
+            <p class="meta">Journal of Computational Chemistry</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= Research projects ================= -->
+      <section id="research" aria-labelledby="h-research">
+        <h2 id="h-research">Research projects</h2>
+
+        <article class="entry">
+          <p class="when">Aug 2023 &ndash; May 2024</p>
+          <div class="what">
+            <h3>Balanced optical homodyne detection</h3>
+            <p class="where">DIAT, Pune. Guided by Dr. G. Raghavan and Dr. K. Raju Pandiri</p>
+            <ul>
+              <li>Designed and built a 95%-visibility Mach&ndash;Zehnder interferometer to measure weak optical fields at about 10<sup>&minus;5</sup> of the local oscillator, probing the quantum noise floor.</li>
+              <li>Reconstructed Wigner functions and density matrices from homodyne statistics, with full state tomography of vacuum and weak coherent states.</li>
+              <li>Built a beamsplitter noise model quantifying how decoherence corrupts the interference structure.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Jan &ndash; Apr 2023</p>
+          <div class="what">
+            <h3>Two-qubit photonic tomography</h3>
+            <p class="where">DIAT, Pune. Guided by Dr. K. Srinivasan and Dr. G. Raghavan</p>
+            <ul>
+              <li>Constructed a &beta;-BBO SPDC source of polarization-entangled photon pairs with about 10% heralding efficiency.</li>
+              <li>Performed two-qubit state tomography with maximum-likelihood estimation, and wrote the tools for density matrix reconstruction and entanglement quantification.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Jan &ndash; May 2021</p>
+          <div class="what">
+            <h3>Revivals in nonlinear Kerr systems</h3>
+            <p class="where">Loyola College, Chennai. Guided by Mr. Saikumar K. and Mr. Joseph Prabagar</p>
+            <ul>
+              <li>Derived analytical conditions for revival and fractional revival under the Kerr Hamiltonian, and computed higher-order moments as signatures of nonclassical dynamics.</li>
+              <li>Drew quantum carpets to visualise wavepacket dynamics and their classical phase-space correspondences.</li>
+            </ul>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Demonstration</p>
+          <div class="what">
+            <h3>B-92 quantum key distribution</h3>
+            <p class="summary">Demonstrated the B-92 protocol with free-space single-photon transmission over 3 metres.</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= Education ================= -->
+      <section id="education" aria-labelledby="h-education">
+        <h2 id="h-education">Education</h2>
+
+        <article class="entry">
+          <p class="when">Aug 2022 &ndash; May 2024</p>
+          <div class="what">
+            <h3>M.Tech, Quantum Computing</h3>
+            <p class="where">Defence Institute of Advanced Technology, Pune. CGPA 9.15/10</p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Jul 2019 &ndash; Jun 2021</p>
+          <div class="what">
+            <h3>M.Sc, Physics</h3>
+            <p class="where">Loyola College, Chennai. CGPA 8.44/10</p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Jun 2016 &ndash; Jun 2019</p>
+          <div class="what">
+            <h3>B.Sc, Physics with Computer Applications</h3>
+            <p class="where">D.G. Vaishnav College, Chennai. CGPA 8.7/10</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= Skills ================= -->
+      <section id="skills" aria-labelledby="h-skills">
+        <h2 id="h-skills">Skills</h2>
+
+        <article class="entry">
+          <p class="when">Hardware and frameworks</p>
+          <div class="what"><p class="summary" style="margin-top:0">IBM Quantum, IQM Cloud, Qiskit, CUDA-Q, PennyLane, QuTiP</p></div>
+        </article>
+        <article class="entry">
+          <p class="when">Algorithms and methods</p>
+          <div class="what"><p class="summary" style="margin-top:0">VQE, QAOA, QPE, Trotterization, DMET, SQD, quantum state tomography (MLE), Wigner function reconstruction, error mitigation</p></div>
+        </article>
+        <article class="entry">
+          <p class="when">Programming</p>
+          <div class="what"><p class="summary" style="margin-top:0">Python (advanced), C/C++, MATLAB, JavaScript</p></div>
+        </article>
+        <article class="entry">
+          <p class="when">Tools</p>
+          <div class="what"><p class="summary" style="margin-top:0">LaTeX, Git</p></div>
+        </article>
+        <article class="entry">
+          <p class="when">Languages</p>
+          <div class="what"><p class="summary" style="margin-top:0">English (TOEFL iBT 112/120), Odia (mother tongue), Tamil (fluent), Hindi (fluent)</p></div>
+        </article>
+      </section>
+
+      <!-- ================= Talks and posters ================= -->
+      <section id="talks" aria-labelledby="h-talks">
+        <h2 id="h-talks">Talks and posters</h2>
+
+        <article class="entry">
+          <p class="when">2026</p>
+          <div class="what">
+            <h3>VQE: Theory and Implementation</h3>
+            <p class="where">Invited talk, Quantum Programming Bootcamp 2026, at QClairvoyance Quantum Labs in association with SVNIT</p>
+          </div>
+        </article>
+        <article class="entry">
+          <p class="when">2024</p>
+          <div class="what">
+            <h3>Balanced Homodyne Detection of CV Quantum States</h3>
+            <p class="where">Poster, ICQTA 2024</p>
+          </div>
+        </article>
+        <article class="entry">
+          <p class="when">2024</p>
+          <div class="what">
+            <h3>High bandwidth homodyne detector development</h3>
+            <p class="where">Poster, OPTOIn 2024</p>
+          </div>
+        </article>
+      </section>
+
+      <!-- ================= Projects and writing ================= -->
+      <section id="projects" aria-labelledby="h-projects">
+        <h2 id="h-projects">Projects and writing</h2>
+
+        <article class="entry">
+          <p class="when">Code</p>
+          <div class="what">
+            <h3>Qutrit</h3>
+            <p class="summary">A custom simulation framework for ternary quantum systems, with Deutsch&ndash;Jozsa and Simon&rsquo;s algorithm implemented in a qutrit gate model.</p>
+            <p class="links"><a href="https://github.com/ashish-kp" rel="noopener">GitHub profile</a></p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Code</p>
+          <div class="what">
+            <h3>Fractals in chaos games</h3>
+            <p class="summary">Simple rules for placing points generate fractals. A small project inspired by a Mathologer video.</p>
+            <p class="links"><a href="https://github.com/ashish-kp/fractals_from_chaos_game" rel="noopener">Source</a></p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Code</p>
+          <div class="what">
+            <h3>Boids</h3>
+            <p class="summary">The complex-looking behaviour of a flock emerges from three simple rules.</p>
+            <p class="links">
+              <a href="https://www.glowscript.org/#/user/p.b.ashish786/folder/MyPrograms/program/boids" rel="noopener">Run it</a>
+              <a href="https://github.com/ashish-kp/Boids_Boi" rel="noopener">Source</a>
+            </p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Code</p>
+          <div class="what">
+            <h3>Game of Life</h3>
+            <p class="summary">Conway&rsquo;s Game of Life again, learnt from The Coding Train. No customisation yet: pixels coming to life and dying.</p>
+            <p class="links"><a href="others/game_of_life/the_game.html">Open</a></p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Notes</p>
+          <div class="what">
+            <h3>Revivals and fractional revivals</h3>
+            <p class="summary">A short discussion of revivals and fractional revivals in quantum systems.</p>
+            <p class="links"><a href="https://drive.google.com/file/d/1EnmGRT3whFDGnIUfVNWVLsKr3d_BPI36/view?usp=sharing" rel="noopener">Read</a></p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Fiction</p>
+          <div class="what">
+            <h3>Xersei Freid&rsquo;s Interviews</h3>
+            <p class="summary">A B-class personnel&rsquo;s memoirs of the people they interviewed in an SCP facility.</p>
+            <p class="links"><a href="articles/scp_3049.html">Read</a></p>
+          </div>
+        </article>
+
+        <article class="entry">
+          <p class="when">Fiction</p>
+          <div class="what">
+            <h3>Staring In</h3>
+            <p class="summary">Dr. Henry rushes to Dr. Forder&rsquo;s laboratory after Dr. Forder makes a groundbreaking discovery.</p>
+            <p class="links"><a href="articles/story_1.html">Read</a></p>
+          </div>
+        </article>
+      </section>
+
+      <footer>
+        &copy; 2026 Ashish Kumar Patra
+      </footer>
+    </main>
   </div>
 
-  <div class="projects-container">
-    <div class="project-container project-card">
-      <h3 class="project-title"> Staring In </h3>
-      <p class="project-details"> Dr.Henry rushes to Dr.Forder's laboratory after Dr.Forder makes a ground breaking discovery.
-        </br>
-        <a class="project-link" href="articles/story_1.html">Here </a>
-    </div>
-  </div>
-    
-  </section>
-  </br>
-  <h2 style="text-align : center" id="contact">Get In Touch With Me</h2>
-  <footer id="contact">
-    <a href="p.b.ashish786@gmail.com" target="_blank"><img src="https://cdn.dribbble.com/users/4874/screenshots/3074660/media/867fc628a2ac456013b60186d9cf54ff.gif" alt="GMail" loading="lazy" class="socicon" style="width : 2.5rem; margin-top: -10rem;" /></a>
-    <a href="https://www.instagram.com/white_ronin_a/" target="_blank"><img src="https://cliply.co/wp-content/uploads/2019/07/371907300_INSTAGRAM_ICON_400px.gif" alt="Instagram" class="socicon" style="width: 3rem; height: 3rem; " /></a>
-    <a href="#" target="_blank"><img src="https://cliply.co/wp-content/uploads/2021/02/372102050_LINKEDIN_ICON_400px.gif" alt="Linkedin" loading="lazy" class="socicon" style="width:3rem; height:3rem;" /></a>
-    <a href="https://github.com/ashish-kp" target="_blank"><img src="https://gist.githubusercontent.com/theAdityaNVS/f5b585d1082da2dffffea32434f37956/raw/7f9552d0a179b4f84059259fa878199e369b069c/GitHub-logo.gif" alt="Github" class="socicon" /></a>
-  </footer>
-  <div class="footnote">
-    <p>The code for this website was essentially copied from <a href="https://www.freecodecamp.org/news/how-to-build-a-developer-portfolio-website/">here</a>.</p>
-  </div>
+  <script>
+    (function () {
+      var root = document.documentElement;
+      var buttons = Array.prototype.slice.call(document.querySelectorAll('[data-theme-choice]'));
+      var media = window.matchMedia('(prefers-color-scheme: dark)');
+
+      function current() {
+        var set = root.getAttribute('data-theme');
+        return set || (media.matches ? 'dark' : 'light');
+      }
+      function sync() {
+        var now = current();
+        buttons.forEach(function (b) {
+          b.setAttribute('aria-pressed', String(b.getAttribute('data-theme-choice') === now));
+        });
+      }
+      buttons.forEach(function (b) {
+        b.addEventListener('click', function () {
+          var choice = b.getAttribute('data-theme-choice');
+          root.setAttribute('data-theme', choice);
+          try { localStorage.setItem('theme', choice); } catch (e) {}
+          sync();
+        });
+      });
+      if (media.addEventListener) media.addEventListener('change', sync);
+      sync();
+    })();
+  </script>
+
+  <script>
+    (function () {
+      var links = Array.prototype.slice.call(document.querySelectorAll('.nav a'));
+      var byId = {};
+      links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+      if (!('IntersectionObserver' in window)) return;
+
+      var observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (!entry.isIntersecting) return;
+          links.forEach(function (a) { a.removeAttribute('aria-current'); });
+          var active = byId[entry.target.id];
+          if (active) active.setAttribute('aria-current', 'true');
+        });
+      }, { rootMargin: '-25% 0px -65% 0px' });
+
+      document.querySelectorAll('main section[id]').forEach(function (s) { observer.observe(s); });
+    })();
+  </script>
 </body>
-
 </html>
