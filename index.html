@@ -22,7 +22,7 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -31,7 +31,6 @@
       --muted: #566074;
       --rule: #D8DDE6;
       --accent: #2F55D4;
-      --serif: 'Instrument Serif', 'Iowan Old Style', Georgia, serif;
       --sans: 'Instrument Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
     }
 
@@ -113,11 +112,10 @@
     /* ---------- Name ---------- */
     h1 {
       margin: 0;
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: clamp(3.5rem, 7.2vw, 5.75rem);
-      line-height: 0.92;
-      letter-spacing: -0.02em;
+      font-weight: 600;
+      font-size: clamp(2.75rem, 5vw, 4.25rem);
+      line-height: 1.02;
+      letter-spacing: -0.035em;
     }
     h1 span { display: block; }
 
@@ -174,10 +172,10 @@
 
     .lede {
       margin: 0;
-      font-family: var(--serif);
-      font-size: clamp(1.6rem, 2.6vw, 2.0625rem);
-      line-height: 1.25;
-      letter-spacing: -0.005em;
+      font-weight: 500;
+      font-size: clamp(1.3rem, 2vw, 1.625rem);
+      line-height: 1.4;
+      letter-spacing: -0.015em;
       text-wrap: pretty;
     }
     .about p:not(.lede) { margin: 1.25rem 0 0; color: var(--muted); max-width: 38rem; }
@@ -187,11 +185,10 @@
 
     h2 {
       margin: 0 0 1.25rem;
-      font-family: var(--serif);
-      font-weight: 400;
-      font-size: 2rem;
-      line-height: 1.1;
-      letter-spacing: -0.01em;
+      font-weight: 600;
+      font-size: 1.625rem;
+      line-height: 1.15;
+      letter-spacing: -0.025em;
     }
 
     .entry {
