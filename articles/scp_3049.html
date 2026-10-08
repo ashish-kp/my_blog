@@ -1,151 +1,312 @@
-<!DOCTYPE html5>
-
+<!DOCTYPE html>
+<html lang="en">
 <head>
-  
-  <style>
-    body {
-  background-color: #AACCEE;
-  font-size: 15px;
-  font-family: "Montserrat" , serif;
-}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>SCP-3049 · Ashish Kumar Patra</title>
+    <meta name="description" content="A tribute to SCP-3049, the oven that bakes an apple pie by first creating a universe.">
+    <meta name="theme-color" content="#AACCEE">
 
-#main {
-  margin-top: 100px;
-}
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-h1{
-  text-align: center;
-  font-family: "Courier New", serif;
-}
+    <style>
+        :root {
+            /* Colours carried over from the original page */
+            --page: #AACCEE;
+            --panel-a: #cceeff;
+            --panel-b: #bbddff;
+            --caption: #AACCFF;
+            --nav-a: #bbbbee;
+            --nav-b: #ccccff;
+            --redact: #808080;
+            --ink: #111111;
 
-h2 {
-  margin-left: 10%;
-}
+            /* Darker shades of the same blue family */
+            --ink-soft: #2b3656;
+            --accent: #4a5f9a;
+            --rule: rgba(17, 17, 17, 0.14);
+        }
 
-#img-div {
-  padding: 10px 10px 10px 10px;
-  margin-left: auto;
-  margin-right: auto;
-  display: block;
-}
+        *, *::before, *::after { box-sizing: border-box; }
 
-.art {
-  width: 70%;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  background-image: linear-gradient(90deg, #cceeff, #bbddff);
-  border-radius: 20px;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  maegin-bottom: 100px;
-}
+        html { -webkit-text-size-adjust: 100%; scroll-padding-top: 4.5rem; }
 
-.redacted {
-  background-color: gray;
-  color: gray;
-}
+        body {
+            margin: 0;
+            background: var(--page);
+            color: var(--ink);
+            font-family: "Montserrat", system-ui, sans-serif;
+            font-size: clamp(1rem, 0.96rem + 0.2vw, 1.0625rem);
+            line-height: 1.75;
+            -webkit-font-smoothing: antialiased;
+        }
 
-p {
-  margin-left: 10%;
-  margin-right: 10%;
-  text-indent: 10%;
-}
+        a { color: inherit; text-underline-offset: 0.25em; }
 
-#img-caption {
-  background-color :AACCFF;
-  padding: 10px 10px 10px 10px;
-  text-align: center;
-}
+        a:focus-visible {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px;
+            border-radius: 2px;
+        }
 
-#image {
-  max-width: 80%;
-  max-height: auto;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
+        /* ---------- Top bar ---------- */
 
-#quote {
-  font-strength: bold;
-  font-size: 150%;
-  color: #111;
-}
+        .topbar {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            padding: 0.9rem clamp(1.25rem, 4vw, 2.5rem);
+            background-image: linear-gradient(20deg, var(--nav-a), var(--nav-b));
+            border-bottom: 1px solid var(--rule);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
 
-#obs {
-  font-size: 15px;
-  background-color: #ACE;
-  font-family: "Courier New", monospace;
-  font-weight: bold;
-  text-indent: 0px;
-  padding-top: 10px;
-  padding-left: 10px;
-  padding-right: 10px;
-  padding-bottom: 10px;
-}
+        .topbar a { text-decoration: none; padding: 0.2rem 0; }
+        .topbar a:hover { text-decoration: underline; }
 
-#nav-bar {
-  background-image: linear-gradient(20deg, #bbe, #ccf);
-  color: white;
-  width: 100%;
-  height: 10vh;
-  position: fixed;
-  margin-left: -10px;
-  margin-top: -100px;
-}
+        /* ---------- Layout ---------- */
 
+        .wrap {
+            max-width: 46rem;
+            margin: 0 auto;
+            padding: 0 1.25rem 4rem;
+        }
 
+        .title {
+            margin: clamp(2.5rem, 8vw, 5rem) 0 clamp(1.75rem, 5vw, 3rem);
+            text-align: center;
+            font-family: "IBM Plex Mono", "Courier New", monospace;
+            font-weight: 600;
+            font-size: clamp(2.5rem, 11vw, 4.75rem);
+            letter-spacing: -0.02em;
+            line-height: 1;
+        }
 
-  </style>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        /* ---------- Image ---------- */
+
+        .specimen {
+            margin: 0 0 2rem;
+            border-radius: 20px;
+            overflow: hidden;
+            background: var(--panel-b);
+            border: 1px solid var(--rule);
+        }
+
+        .specimen img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .specimen figcaption {
+            padding: 0.75rem 1rem;
+            background: var(--caption);
+            text-align: center;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--ink-soft);
+        }
+
+        /* ---------- Sections ---------- */
+
+        .section {
+            margin: 0 0 2rem;
+            padding: clamp(1.5rem, 5vw, 2.5rem);
+            border-radius: 20px;
+            background-image: linear-gradient(90deg, var(--panel-a), var(--panel-b));
+            border: 1px solid var(--rule);
+        }
+
+        .section h2 {
+            margin: 0 0 1.25rem;
+            font-size: clamp(1.25rem, 1.1rem + 0.8vw, 1.6rem);
+            font-weight: 700;
+            line-height: 1.3;
+        }
+
+        .section p { margin: 0 0 1.1em; }
+        .section p:last-child { margin-bottom: 0; }
+
+        /* The hypothesis: the sentence the whole file turns on */
+        .hypothesis {
+            padding: 1.1rem 1.25rem;
+            border-left: 4px solid var(--accent);
+            border-radius: 0 12px 12px 0;
+            background: var(--page);
+            font-weight: 600;
+            font-size: 1.08em;
+        }
+
+        .section p.hypothesis { margin: 1.5rem 0; }
+
+        /* ---------- Interview quote ---------- */
+
+        .interview-label { color: var(--ink-soft); }
+
+        blockquote {
+            margin: 0 0 1.25rem;
+            padding: 0.25rem 0 0.25rem 1.25rem;
+            border-left: 4px solid var(--accent);
+            font-size: clamp(1.15rem, 1.05rem + 0.6vw, 1.4rem);
+            font-weight: 600;
+            line-height: 1.55;
+        }
+
+        /* ---------- Redaction ---------- */
+
+        .redacted {
+            display: inline-block;
+            padding: 0 0.3em;
+            border-radius: 3px;
+            background: var(--redact);
+            color: var(--redact);
+            line-height: 1.2;
+            user-select: none;
+        }
+
+        .sr-only {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+
+        /* ---------- The line that stares back ---------- */
+
+        .stare span {
+            letter-spacing: calc(var(--i) * 0.045em);
+            font-size: calc(1em + var(--i) * 0.07em);
+        }
+
+        .stare { font-weight: 500; }
+
+        /* ---------- Test log ---------- */
+
+        .log {
+            margin: 1.5rem 0 0;
+            padding: clamp(1.1rem, 4vw, 1.75rem);
+            border-radius: 14px;
+            background: var(--page);
+            border: 1px solid var(--rule);
+            font-family: "IBM Plex Mono", "Courier New", monospace;
+            font-weight: 500;
+            font-size: 0.92rem;
+            line-height: 1.7;
+        }
+
+        .log h3 {
+            margin: 0 0 1rem;
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .log dl { margin: 0; }
+        .log dt { font-weight: 600; margin-top: 0.9rem; }
+        .log dd { margin: 0.15rem 0 0; }
+        .log dd p { margin: 0 0 1em; }
+        .log dd p:last-child { margin-bottom: 0; }
+
+        /* ---------- Footer ---------- */
+
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--rule);
+            font-size: 0.88rem;
+            line-height: 1.6;
+            color: var(--ink-soft);
+        }
+
+        .footer p { margin: 0 0 0.5rem; }
+        .footer a { color: var(--ink); }
+
+        .footer .footnote {
+            margin-top: 1rem;
+            font-size: 0.82rem;
+        }
+
+        @media print {
+            .topbar { display: none; }
+            body { background: #fff; }
+            .section, .specimen, .log { background: #fff; }
+        }
+    </style>
 </head>
-<body>
-<nav id = "nav-bar"></nav>
-<div id = "main">
-  <h1 id = "title">SCP-3049</h1>
-  <div id = "img-div">
-  <article class = "art">
-<img src = "http://scp-wiki.wdfiles.com/local--files/scp-3049/pie.jpg" id = "image" alt = "">
-    <figcaption id = "img-caption">
-  An instance of 3049-1
-    </figcaption>
-</img> 
-  </div>
-  <div class = "art" id = "tribute-info">
-  <h2> 1. To make an apple pie from scratch. </h2>
-  <p>- There is no fun in this for a baker who tries to do new things, the only thing this oven can make is an apple pie. (But these apple pies are literally the best in the entire universe, by the time they are made. Literally.)But for someone who is into physics, this might be the best thing you'll probably ever want to see.</p>
-<p>- Juicy and crusty apple pie...Surely pie to die for...</p>
-    <p>- The first SCP scientist who made the tests to produce new instances of 3049-1 and to observe the process of its making, Dr.<span class = "redacted">Colslls</span> was traumatized so much, that they requested psychological evaluation, and subsequently a shift to another project.</p>
-    <p>- An excerpt from Dr.<span class = "redacted">Colslsl</span>'s interview to the SCP psychological unit.</p>
-    <div id = "quote" class = "art">&ldquo; I thought... I thought it won't get to me. I swear it... it senses you. I mean, your fear. I am sure, further experimation will bring about a rational explanation for it. &rdquo;</div>
-    <p>- After this they spoke incoherently, and became increasingly animated and suffered what can only be as of yet, theorised to be post traumatic disorders, and was sedated. Their later interviews were in a more composed form, but it was always the same hypothesis.</p>
-    
-    <p style = "text-indent: 0px; font-size: 120%; font-weight: bold;">The SCP-3049 senses the worst fears of an observer, and during the production of each subsequent instance of 3049-1, and at the "converging phase" the future of that particular universe changes in such a way so as to influence the observer in a psychologically adverse manner.</p>
-    <p>- The doctor (who shall be henceforth referred to as "the Subject") further gave several accounts of their experiences to back their hypothesis.</p>
-    </div>
-  </br>
-</br>
-  <div class = "art">
-    <h2>2. The Malicious Oven</h2>
-    <p>- Following are the concise results of the experimentations carried out on the 3049, by various observers, as recorded by Dr.<span class = "redacted">Colslsl</span> and their team. The proceedings inside the oven are recorded from a distance of 0.7m from it, with a high-speed camera capable of recording at 10000 frames per second, so as to study the nature of the early universe more accurately.</p>
-    <p>- And thus, when you stare into the oven, the oven stares...at...the oven...stares...at...me...meeeeeeee.</p>
-    <p>- The complete time taken for the creation of 3049-1 is always precisely twenty minutes.</p>
-    <p id = "obs" style = "text-indent: 0px; padding-left: 10px; padding-top: 10px;" class - "art">Test - 1 </br></br>
-Observer: Dr.<span class ="redacted">Colslsl</span></br></br> Description: The SCP-3049 was started with an empty pan within it. The nucleation phase and the primitive stages of the creation of the universe are observed first. </br></br>
-Then a particular galaxy looking similar to the Milky Way is focused. A star system with a red dwarf star is then shown. A certain arid planet at a distance of roughly 10^3 times the radius of the red dwarf is zoomed in further, which is henceforth named as SCP-3049-1A.
-</br></br>
-Life emerges in the undeground crevasses of the planet in the form of semi-fluid microbials, which evolve and grow into sentient after a period of roughly 1.1 billion years from the emergence of life.
-</br></br>
-The predominant lifeforms in the planet, who shall be henceforth called 3049-1A-1, were nowhere near humans in appearance, but had a crustacean form, with hard shell-like coverings on their numerous appendages, often ranging between six to eight for males, and ten to fourteen for females. 3049-1A-1 emerge to the surface of their arid planet after about thirty million years, after countless civil wars and inter-racial struggles.</br></br>
-</p>
-    
-  </div>
 
-  </article>
-</div>
-<div class = "art">
-  <p style = "text-indent: 0px;"><a href = "http://scp-wiki.wikidot.com/scp-3049" id = "tribute-link" target = "_blank">Original article here</a></p>
-</div>
+<body>
+    <nav class="topbar">
+        <a href="/">ashishkp.in</a>
+        <a href="http://scp-wiki.wikidot.com/scp-3049" id="tribute-link" target="_blank" rel="noopener">Original article here</a>
+    </nav>
+
+    <main class="wrap">
+        <h1 class="title" id="title">SCP-3049</h1>
+
+        <figure class="specimen">
+            <img src="https://scp-wiki.wdfiles.com/local--files/scp-3049/pie.jpg" alt="" onerror="this.style.display='none'">
+            <figcaption>An instance of 3049-1</figcaption>
+        </figure>
+
+        <section class="section" id="tribute-info">
+            <h2>1. To make an apple pie from scratch.</h2>
+
+            <p>There is no fun in this for a baker who tries to do new things, the only thing this oven can make is an apple pie. (But these apple pies are literally the best in the entire universe, by the time they are made. Literally.)But for someone who is into physics, this might be the best thing you'll probably ever want to see.</p>
+
+            <p>Juicy and crusty apple pie...Surely pie to die for...</p>
+
+            <p>The first SCP scientist who made the tests to produce new instances of 3049-1 and to observe the process of its making, Dr. <span class="redacted" aria-hidden="true">Colslls</span><span class="sr-only">[redacted]</span> was traumatized so much, that they requested psychological evaluation, and subsequently a shift to another project.</p>
+
+            <p class="interview-label">An excerpt from Dr. <span class="redacted" aria-hidden="true">Colslsl</span><span class="sr-only">[redacted]</span>'s interview to the SCP psychological unit.</p>
+
+            <blockquote id="quote">&ldquo; I thought... I thought it won't get to me. I swear it... it senses you. I mean, your fear. I am sure, further experimation will bring about a rational explanation for it. &rdquo;</blockquote>
+
+            <p>After this they spoke incoherently, and became increasingly animated and suffered what can only be as of yet, theorised to be post traumatic disorders, and was sedated. Their later interviews were in a more composed form, but it was always the same hypothesis.</p>
+
+            <p class="hypothesis">The SCP-3049 senses the worst fears of an observer, and during the production of each subsequent instance of 3049-1, and at the "converging phase" the future of that particular universe changes in such a way so as to influence the observer in a psychologically adverse manner.</p>
+
+            <p>The doctor (who shall be henceforth referred to as "the Subject") further gave several accounts of their experiences to back their hypothesis.</p>
+        </section>
+
+        <section class="section">
+            <h2>2. The Malicious Oven</h2>
+
+            <p>Following are the concise results of the experimentations carried out on the 3049, by various observers, as recorded by Dr. <span class="redacted" aria-hidden="true">Colslsl</span><span class="sr-only">[redacted]</span> and their team. The proceedings inside the oven are recorded from a distance of 0.7m from it, with a high-speed camera capable of recording at 10000 frames per second, so as to study the nature of the early universe more accurately.</p>
+
+            <p class="stare">And thus, when you stare into the oven, the oven stares<span style="--i:1">...at</span><span style="--i:2">...the oven</span><span style="--i:3">...stares</span><span style="--i:4">...at</span><span style="--i:5">...me</span><span style="--i:6">...meeeeeeee.</span></p>
+
+            <p>The complete time taken for the creation of 3049-1 is always precisely twenty minutes.</p>
+
+            <div class="log" id="obs">
+                <h3>Test - 1</h3>
+                <dl>
+                    <dt>Observer:</dt>
+                    <dd>Dr. <span class="redacted" aria-hidden="true">Colslsl</span><span class="sr-only">[redacted]</span></dd>
+
+                    <dt>Description:</dt>
+                    <dd>
+                        <p>The SCP-3049 was started with an empty pan within it. The nucleation phase and the primitive stages of the creation of the universe are observed first.</p>
+                        <p>Then a particular galaxy looking similar to the Milky Way is focused. A star system with a red dwarf star is then shown. A certain arid planet at a distance of roughly 10^3 times the radius of the red dwarf is zoomed in further, which is henceforth named as SCP-3049-1A.</p>
+                        <p>Life emerges in the undeground crevasses of the planet in the form of semi-fluid microbials, which evolve and grow into sentient after a period of roughly 1.1 billion years from the emergence of life.</p>
+                        <p>The predominant lifeforms in the planet, who shall be henceforth called 3049-1A-1, were nowhere near humans in appearance, but had a crustacean form, with hard shell-like coverings on their numerous appendages, often ranging between six to eight for males, and ten to fourteen for females. 3049-1A-1 emerge to the surface of their arid planet after about thirty million years, after countless civil wars and inter-racial struggles.</p>
+                    </dd>
+                </dl>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <p>Adapted from <a href="http://scp-wiki.wikidot.com/scp-3049" target="_blank" rel="noopener">SCP-3049</a> on the SCP Wiki, which is licensed under CC BY-SA 3.0.</p>
+            <p><a href="/">Back to ashishkp.in</a></p>
+            <p class="footnote">This tribute was written by me in 2021. No large language model was used to write or edit its text. Claude was used to style this page and lay out its content; the wording is unchanged.</p>
+        </footer>
+    </main>
 </body>
+</html>
