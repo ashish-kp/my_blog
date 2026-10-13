@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Resume | Ashish Kumar Patra</title>
+  <meta name="description" content="Experience, publications, research projects, education and skills of Ashish Kumar Patra, a quantum analyst working on molecular simulation.">
+  <meta name="color-scheme" content="light dark">
+  <meta property="og:title" content="Resume | Ashish Kumar Patra">
+  <meta property="og:description" content="Experience, publications, research projects, education and skills of Ashish Kumar Patra, a quantum analyst working on molecular simulation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://ashishkp.in/resume.html">
+  <script src="assets/site.js"></script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232F55D4'/%3E%3Ctext x='32' y='45' font-family='Georgia,serif' font-size='40' text-anchor='middle' fill='white'%3EA%3C/text%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+
+  <header class="top">
+    <a class="home" href="index.html">Ashish Kumar Patra</a>
+    <div class="top-right">
+      <nav aria-label="Pages">
+        <ul>
+          <li><a href="resume.html" aria-current="page">Resume</a></li>
+          <li><a href="projects.html">Projects</a></li>
+          <li><a href="writing.html">Writing</a></li>
+        </ul>
+      </nav>
+      <div class="theme" role="group" aria-label="Colour theme">
+        <button type="button" data-theme-choice="light" aria-pressed="false">Light</button>
+        <button type="button" data-theme-choice="dark" aria-pressed="false">Dark</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="page">
+    <div class="layout">
+      <aside class="side">
+        <nav aria-label="On this page">
+          <ul class="nav">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#publications">Publications</a></li>
+            <li><a href="#research">Research projects</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#talks">Talks and posters</a></li>
+          </ul>
+        </nav>
+
+        <ul class="contact">
+          <li><a href="mailto:p.b.ashish786@gmail.com">p.b.ashish786@gmail.com</a></li>
+          <li><a href="https://github.com/ashish-kp" rel="noopener">GitHub</a></li>
+          <!-- Add when ready:
+          <li><a href="YOUR_GOOGLE_SCHOLAR_URL" rel="noopener">Google Scholar</a></li>
+          <li><a href="YOUR_LINKEDIN_URL" rel="noopener">LinkedIn</a></li>
+          -->
+          <li class="cv"><a href="assets/cv.pdf">Download CV (PDF)</a></li>
+        </ul>
+      </aside>
+
+      <main id="main">
+        <h1 class="title">Resume</h1>
+
+      <section id="about" class="about" aria-label="About">
+              <p class="lede">I develop hybrid quantum-classical algorithms for molecular simulation, from machine-learning-assisted subspace selection within density matrix embedding to resource-efficient primitives for early fault-tolerant hardware.</p>
+              <p>My background is in continuous-variable quantum optics and hardware benchmarking on superconducting devices. Outside work I read and write fiction, and I like building small simulations: boids, chaos-game fractals and cellular automata.</p>
+            </section>
+
+      <section id="experience" aria-labelledby="h-experience">
+              <h2 id="h-experience">Experience</h2>
+              <article class="entry">
+                <p class="when">Jul 2024 &ndash; present</p>
+                <div class="what">
+                  <h3>Quantum Analyst</h3>
+                  <p class="where">QClairvoyance Quantum Labs Pvt. Ltd.</p>
+                  <ul>
+                    <li>Built and benchmarked a DMET&ndash;SQD simulation pipeline for ligand-like molecular Hamiltonians on 20&ndash;30 qubits, validated against DMET-FCI reference energies.</li>
+                    <li>Ran a large-scale experimental study of DMET-SQD with the LUCJ ansatz on IQM&rsquo;s 24-qubit Sirius superconducting processor (up to 16 operational qubits), estimating chemically accurate ground-state energies across benchmark molecules.</li>
+                    <li>Developed QSCI-RBM, a compact subspace generation protocol using Restricted Boltzmann Machines within DMET. On a Carmofur&ndash;SARS-CoV-2 M<sup>pro</sup> protein&ndash;ligand complex it reached chemical accuracy with about 4% of the configuration subspace, versus about 20% for standard SQD, which did not reach it.</li>
+                    <li>Designed a polylogarithmic-time quantum algorithm for the Laplace transform using eigenvalue transformation, and analysed its resource scaling.</li>
+                    <li>Contributed to VQE resource estimation for small molecules and to a DMET-VQE framework using the COMPASS ansatz for strongly correlated systems.</li>
+                  </ul>
+                </div>
+              </article>
+            </section>
+
+      <section id="publications" aria-labelledby="h-publications">
+              <h2 id="h-publications">Publications</h2>
+
+              <article class="entry">
+                <p class="when">Jul 2026</p>
+                <div class="what">
+                  <h3><a href="https://arxiv.org/abs/2607.20585" rel="noopener">Machine-Learned Compact Subspace Generation for Quantum Selected Configuration Interaction within Density Matrix Embedding Framework</a></h3>
+                  <p class="meta"><strong>A. K. Patra</strong>, Anurag K. S. V., Ruchika Bhat, Sai Shankar P., Rahul Maitra, Jaiganesh G.</p>
+                  <p class="meta">arXiv:2607.20585</p>
+                  <p class="summary">Introduces QSCI-RBM and applies it to a Carmofur&ndash;M<sup>pro</sup> complex, reaching chemical accuracy with about 4% of the configuration subspace.</p>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Jul 2026</p>
+                <div class="what">
+                  <h3><a href="https://arxiv.org/abs/2607.20943" rel="noopener">An Analytically Trained Variational Surrogate for Quantum Phase Estimation on NISQ Hardware</a></h3>
+                  <p class="meta">Mousumi Kundu, <strong>A. K. Patra</strong>, Anurag K. S. V., Ruchika Bhat, Sai Shankar P., Alok Shukla, Jaiganesh G.</p>
+                  <p class="meta">arXiv:2607.20943</p>
+                  <p class="summary">A shallow variational circuit trained analytically to reproduce QPE measurement distributions for molecular ground-state energies, avoiding the deep circuits direct QPE needs.</p>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Apr 2026</p>
+                <div class="what">
+                  <h3><a href="https://arxiv.org/abs/2604.01983" rel="noopener">Towards Chemically Accurate and Scalable Quantum Simulations on IQM Quantum Hardware: A Quantum-HPC Hybrid Approach</a></h3>
+                  <p class="meta">Anurag K. S. V.&dagger;, <strong>A. K. Patra</strong>&dagger;, et al. (&dagger; equal contribution)</p>
+                  <p class="meta">arXiv:2604.01983</p>
+                  <p class="summary">DMET-SQD with the LUCJ ansatz on IQM&rsquo;s 24-qubit Sirius processor, with a shot-dependent convergence analysis that sets practical limits for hybrid workflows.</p>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Apr 2026</p>
+                <div class="what">
+                  <h3><a href="https://arxiv.org/abs/2604.19470" rel="noopener">Advancing Practical Quantum Embedding Simulations via Operator Commutativity Based State Preparation for Complex Chemical Systems</a></h3>
+                  <p class="meta">Dibyendu Mondal, <strong>A. K. Patra</strong>, et al.</p>
+                  <p class="meta">Chem. Sci. 2026; arXiv:2604.19470</p>
+                  <p class="summary">A DMET-VQE embedding framework built on the dynamically constructed COMPASS ansatz for strongly correlated molecular systems.</p>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Jan 2026</p>
+                <div class="what">
+                  <h3><a href="https://arxiv.org/abs/2601.09763" rel="noopener">Fractional Revival Dynamics in Kerr-Type Systems: Angular Momentum Moments and Classical Analogs</a></h3>
+                  <p class="meta"><strong>A. K. Patra</strong>, Saikumar Krithivasan</p>
+                  <p class="meta">arXiv:2601.09763</p>
+                  <p class="summary">Analytical revival structures from angular momentum moments, with higher-order signatures of nonclassical evolution and their classical phase-space analogs.</p>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Dec 2025</p>
+                <div class="what">
+                  <h3><a href="https://arxiv.org/abs/2512.17980" rel="noopener">A Polylogarithmic-Time Quantum Algorithm for the Laplace Transform</a></h3>
+                  <p class="meta">Akash Kumar Singh, <strong>A. K. Patra</strong>, et al.</p>
+                  <p class="meta">arXiv:2512.17980</p>
+                  <p class="summary">A poly-log scaling algorithm via eigenvalue transformation, offering a general framework for efficient functional evaluation on quantum computers.</p>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Nov 2025</p>
+                <div class="what">
+                  <h3><a href="https://arxiv.org/abs/2511.22158" rel="noopener">Quantum Simulation of Ligand-like Molecules through Sample-Based Quantum Diagonalization in Density Matrix Embedding Framework</a></h3>
+                  <p class="meta"><strong>A. K. Patra</strong>, et al.</p>
+                  <p class="meta">arXiv:2511.22158</p>
+                  <p class="summary">A fragment-based DMET-SQD pipeline in strong agreement with DMET-FCI benchmarks for molecular systems of 20&ndash;30 qubits.</p>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Jun 2025</p>
+                <div class="what">
+                  <h3><a href="https://doi.org/10.22541/au.176341037.72812424/v1" rel="noopener">Survey of Quantum Algorithms: Foundations, Frameworks and Applications</a></h3>
+                  <p class="meta"><strong>A. K. Patra</strong>, et al.</p>
+                  <p class="meta">Authorea preprint</p>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Feb 2025</p>
+                <div class="what">
+                  <h3><a href="https://doi.org/10.1002/jcc.70379" rel="noopener">Resource Estimation for VQE on Small Molecules: Impact of Fermion Mappings and Hamiltonian Reductions</a><span class="tag">Peer-reviewed</span></h3>
+                  <p class="meta">Anurag K. S. V., <strong>A. K. Patra</strong>, et al.</p>
+                  <p class="meta">Journal of Computational Chemistry</p>
+                </div>
+              </article>
+            </section>
+
+      <section id="research" aria-labelledby="h-research">
+              <h2 id="h-research">Research projects</h2>
+
+              <article class="entry">
+                <p class="when">Aug 2023 &ndash; May 2024</p>
+                <div class="what">
+                  <h3>Balanced optical homodyne detection</h3>
+                  <p class="where">DIAT, Pune. Guided by Dr. G. Raghavan and Dr. K. Raju Pandiri</p>
+                  <ul>
+                    <li>Designed and built a 95%-visibility Mach&ndash;Zehnder interferometer to measure weak optical fields at about 10<sup>&minus;5</sup> of the local oscillator, probing the quantum noise floor.</li>
+                    <li>Reconstructed Wigner functions and density matrices from homodyne statistics, with full state tomography of vacuum and weak coherent states.</li>
+                    <li>Built a beamsplitter noise model quantifying how decoherence corrupts the interference structure.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Jan &ndash; Apr 2023</p>
+                <div class="what">
+                  <h3>Two-qubit photonic tomography</h3>
+                  <p class="where">DIAT, Pune. Guided by Dr. K. Srinivasan and Dr. G. Raghavan</p>
+                  <ul>
+                    <li>Constructed a &beta;-BBO SPDC source of polarization-entangled photon pairs with about 10% heralding efficiency.</li>
+                    <li>Performed two-qubit state tomography with maximum-likelihood estimation, and wrote the tools for density matrix reconstruction and entanglement quantification.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Jan &ndash; May 2021</p>
+                <div class="what">
+                  <h3>Revivals in nonlinear Kerr systems</h3>
+                  <p class="where">Loyola College, Chennai. Guided by Mr. Saikumar K. and Mr. Joseph Prabagar</p>
+                  <ul>
+                    <li>Derived analytical conditions for revival and fractional revival under the Kerr Hamiltonian, and computed higher-order moments as signatures of nonclassical dynamics.</li>
+                    <li>Drew quantum carpets to visualise wavepacket dynamics and their classical phase-space correspondences.</li>
+                  </ul>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Demonstration</p>
+                <div class="what">
+                  <h3>B-92 quantum key distribution</h3>
+                  <p class="summary">Demonstrated the B-92 protocol with free-space single-photon transmission over 3 metres.</p>
+                </div>
+              </article>
+            </section>
+
+      <section id="education" aria-labelledby="h-education">
+              <h2 id="h-education">Education</h2>
+
+              <article class="entry">
+                <p class="when">Aug 2022 &ndash; May 2024</p>
+                <div class="what">
+                  <h3>M.Tech, Quantum Computing</h3>
+                  <p class="where">Defence Institute of Advanced Technology, Pune. CGPA 9.15/10</p>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Jul 2019 &ndash; Jun 2021</p>
+                <div class="what">
+                  <h3>M.Sc, Physics</h3>
+                  <p class="where">Loyola College, Chennai. CGPA 8.44/10</p>
+                </div>
+              </article>
+
+              <article class="entry">
+                <p class="when">Jun 2016 &ndash; Jun 2019</p>
+                <div class="what">
+                  <h3>B.Sc, Physics with Computer Applications</h3>
+                  <p class="where">D.G. Vaishnav College, Chennai. CGPA 8.7/10</p>
+                </div>
+              </article>
+            </section>
+
+      <section id="skills" aria-labelledby="h-skills">
+              <h2 id="h-skills">Skills</h2>
+
+              <article class="entry">
+                <p class="when">Hardware and frameworks</p>
+                <div class="what"><p class="summary" style="margin-top:0">IBM Quantum, IQM Cloud, Qiskit, CUDA-Q, PennyLane, QuTiP</p></div>
+              </article>
+              <article class="entry">
+                <p class="when">Algorithms and methods</p>
+                <div class="what"><p class="summary" style="margin-top:0">VQE, QAOA, QPE, Trotterization, DMET, SQD, quantum state tomography (MLE), Wigner function reconstruction, error mitigation</p></div>
+              </article>
+              <article class="entry">
+                <p class="when">Programming</p>
+                <div class="what"><p class="summary" style="margin-top:0">Python (advanced), C/C++, MATLAB, JavaScript</p></div>
+              </article>
+              <article class="entry">
+                <p class="when">Tools</p>
+                <div class="what"><p class="summary" style="margin-top:0">LaTeX, Git</p></div>
+              </article>
+              <article class="entry">
+                <p class="when">Languages</p>
+                <div class="what"><p class="summary" style="margin-top:0">English (TOEFL iBT 112/120), Odia (mother tongue), Tamil (fluent), Hindi (fluent)</p></div>
+              </article>
+            </section>
+
+      <section id="talks" aria-labelledby="h-talks">
+              <h2 id="h-talks">Talks and posters</h2>
+
+              <article class="entry">
+                <p class="when">2026</p>
+                <div class="what">
+                  <h3>VQE: Theory and Implementation</h3>
+                  <p class="where">Invited talk, Quantum Programming Bootcamp 2026, at QClairvoyance Quantum Labs in association with SVNIT</p>
+                </div>
+              </article>
+              <article class="entry">
+                <p class="when">2024</p>
+                <div class="what">
+                  <h3>Balanced Homodyne Detection of CV Quantum States</h3>
+                  <p class="where">Poster, ICQTA 2024</p>
+                </div>
+              </article>
+              <article class="entry">
+                <p class="when">2024</p>
+                <div class="what">
+                  <h3>High bandwidth homodyne detector development</h3>
+                  <p class="where">Poster, OPTOIn 2024</p>
+                </div>
+              </article>
+            </section>
+
+      <footer>
+        &copy; 2026 Ashish Kumar Patra
+      </footer>
+      </main>
+    </div>
+  </div>
+</body>
+</html>
